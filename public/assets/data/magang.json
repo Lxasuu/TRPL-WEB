@@ -1,0 +1,227 @@
+{
+    "periode_default": "Februari – Juli 2025",
+    "companies": [
+        {
+            "nama": "PT. Dharma Polimetal",
+            "lokasi": "Cikarang",
+            "mahasiswa": [
+                {
+                    "nama": "Ilham Dwi Ischan",
+                    "nim": "221011001",
+                    "divisi": "Web Developer",
+                    "periode": "Feb–Jul 2025"
+                },
+                {
+                    "nama": "Aulia Rahman",
+                    "nim": "221011002",
+                    "divisi": "IT Support",
+                    "periode": "Feb–Jul 2025"
+                },
+                {
+                    "nama": "Fajar Nugraha",
+                    "nim": "221011003",
+                    "divisi": "System Analyst",
+                    "periode": "Feb–Jul 2025"
+                },
+                {
+                    "nama": "Dinda Putri",
+                    "nim": "221011004",
+                    "divisi": "UI/UX Designer",
+                    "periode": "Feb–Jul 2025"
+                },
+                {
+                    "nama": "Rizky Ananda",
+                    "nim": "221011005",
+                    "divisi": "Backend Developer",
+                    "periode": "Feb–Jul 2025"
+                }
+            ]
+        },
+        {
+            "nama": "PT. Galva Galindra Multi Cipta",
+            "lokasi": "Jakarta",
+            "mahasiswa": [
+                {
+                    "nama": "Muhammad Arif",
+                    "nim": "221011006",
+                    "divisi": "Network Engineer",
+                    "periode": "Feb–Jul 2025"
+                },
+                {
+                    "nama": "Nabila Zahra",
+                    "nim": "221011007",
+                    "divisi": "Database Administrator",
+                    "periode": "Feb–Jul 2025"
+                },
+                {
+                    "nama": "Bayu Pratama",
+                    "nim": "221011008",
+                    "divisi": "IT Infrastructure",
+                    "periode": "Feb–Jul 2025"
+                },
+                {
+                    "nama": "Siti Aisyah",
+                    "nim": "221011009",
+                    "divisi": "Helpdesk IT",
+                    "periode": "Feb–Jul 2025"
+                }
+            ]
+        },
+        {
+            "nama": "PT. Meta Sukses Pratama",
+            "lokasi": "Bekasi",
+            "mahasiswa": [
+                {
+                    "nama": "Ahmad Fauzi",
+                    "nim": "221011010",
+                    "divisi": "Mobile Developer",
+                    "periode": "Feb–Jul 2025"
+                },
+                {
+                    "nama": "Putri Amelia",
+                    "nim": "221011011",
+                    "divisi": "Quality Assurance",
+                    "periode": "Feb–Jul 2025"
+                },
+                {
+                    "nama": "Yoga Prasetyo",
+                    "nim": "221011012",
+                    "divisi": "Frontend Developer",
+                    "periode": "Feb–Jul 2025"
+                },
+                {
+                    "nama": "Intan Permata",
+                    "nim": "221011013",
+                    "divisi": "Business Analyst",
+                    "periode": "Feb–Jul 2025"
+                },
+                {
+                    "nama": "Reza Firmansyah",
+                    "nim": "221011014",
+                    "divisi": "DevOps Intern",
+                    "periode": "Feb–Jul 2025"
+                }
+            ]
+        },
+        {
+            "nama": "PT. Saga Hikari Teknindo Sejati",
+            "lokasi": "Karawang",
+            "mahasiswa": [
+                {
+                    "nama": "Andi Kurniawan",
+                    "nim": "221011015",
+                    "divisi": "Automation Engineer",
+                    "periode": "Feb–Jul 2025"
+                },
+                {
+                    "nama": "Luthfi Ramadhan",
+                    "nim": "221011016",
+                    "divisi": "IoT Developer",
+                    "periode": "Feb–Jul 2025"
+                },
+                {
+                    "nama": "Citra Lestari",
+                    "nim": "221011017",
+                    "divisi": "System Integrator",
+                    "periode": "Feb–Jul 2025"
+                }
+            ]
+        },
+        {
+            "nama": "PT. Saic General Motor Wuling (SGMW)",
+            "lokasi": "Cikarang",
+            "mahasiswa": [
+                {
+                    "nama": "Rizky Maulana",
+                    "nim": "221011018",
+                    "divisi": "Data Analyst",
+                    "periode": "Feb–Jul 2025"
+                },
+                {
+                    "nama": "Kevin Santoso",
+                    "nim": "221011019",
+                    "divisi": "Manufacturing IT",
+                    "periode": "Feb–Jul 2025"
+                },
+                {
+                    "nama": "Bagas Saputra",
+                    "nim": "221011020",
+                    "divisi": "Business Intelligence",
+                    "periode": "Feb–Jul 2025"
+                },
+                {
+                    "nama": "Nanda Pratiwi",
+                    "nim": "221011021",
+                    "divisi": "ERP Support",
+                    "periode": "Feb–Jul 2025"
+                },
+                {
+                    "nama": "Fikri Hidayat",
+                    "nim": "221011022",
+                    "divisi": "Cloud Engineer",
+                    "periode": "Feb–Jul 2025"
+                },
+                {
+                    "nama": "Salsa Ayuningtyas",
+                    "nim": "221011023",
+                    "divisi": "IT Project Support",
+                    "periode": "Feb–Jul 2025"
+                }
+            ]
+        },
+        {
+            "nama": "PT. Sari Takagi Elok Produk",
+            "lokasi": "Karawang",
+            "mahasiswa": [
+                {
+                    "nama": "Hendra Gunawan",
+                    "nim": "221011024",
+                    "divisi": "IT Production",
+                    "periode": "Feb–Jul 2025"
+                },
+                {
+                    "nama": "Melati Anggraini",
+                    "nim": "221011025",
+                    "divisi": "Data Entry System",
+                    "periode": "Feb–Jul 2025"
+                },
+                {
+                    "nama": "Ardi Wijaya",
+                    "nim": "221011026",
+                    "divisi": "Application Support",
+                    "periode": "Feb–Jul 2025"
+                }
+            ]
+        },
+        {
+            "nama": "PT. Toso Industry Indonesia",
+            "lokasi": "Cikarang",
+            "mahasiswa": [
+                {
+                    "nama": "Farhan Akbar",
+                    "nim": "221011027",
+                    "divisi": "IT Maintenance",
+                    "periode": "Feb–Jul 2025"
+                },
+                {
+                    "nama": "Novi Handayani",
+                    "nim": "221011028",
+                    "divisi": "Web Administrator",
+                    "periode": "Feb–Jul 2025"
+                },
+                {
+                    "nama": "Rian Setiawan",
+                    "nim": "221011029",
+                    "divisi": "Software Tester",
+                    "periode": "Feb–Jul 2025"
+                },
+                {
+                    "nama": "Tika Maharani",
+                    "nim": "221011030",
+                    "divisi": "Documentation Staff",
+                    "periode": "Feb–Jul 2025"
+                }
+            ]
+        }
+    ]
+}
