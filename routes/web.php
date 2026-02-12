@@ -9,11 +9,16 @@ use App\Models\KaryaMahasiswa;
 use App\Models\PenempatanMagang;
 use App\Models\Beasiswa;
 use App\Models\Faq;
+use App\Models\BlogPost;
 
 Route::get('/', function () {
     $stats = Stat::all();
     $faqs = Faq::orderBy('order')->get();
-    return view('welcome', compact('stats', 'faqs'));
+    $blogPosts = BlogPost::where('status', 'published')
+        ->latest('published_at')
+        ->take(3)
+        ->get();
+    return view('welcome', compact('stats', 'faqs', 'blogPosts'));
 });
 
 Route::get('/about', function () {
@@ -52,11 +57,24 @@ Route::get('/kontak', function () {
 });
 
 Route::get('/blog', function () {
-    return view('blog');
+    $blogPosts = BlogPost::where('status', 'published')
+        ->orderBy('published_at', 'desc')
+        ->get();
+    return view('blog', compact('blogPosts'));
 });
 
+Route::get('/blog/{slug}', function ($slug) {
+    $post = BlogPost::with('author')->where('slug', $slug)->firstOrFail();
+    $recentPosts = BlogPost::where('status', 'published')
+        ->where('id', '!=', $post->id)
+        ->latest('published_at')
+        ->take(5)
+        ->get();
+    return view('blog-details', compact('post', 'recentPosts'));
+})->name('blog.show');
+
 Route::get('/blog-details', function () {
-    return view('blog-details');
+    return redirect('/blog');
 });
 
 Route::get('/portfolio-details', function () {

@@ -15,8 +15,8 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Get;
-use Filament\Forms\Set;
+use Filament\Schemas\Components\Utilities\Get;
+use Filament\Schemas\Components\Utilities\Set;
 use Illuminate\Support\Str;
 use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\TextEntry;
@@ -55,6 +55,7 @@ class BlogPostResource extends Resource
                     ->preload(),
                 FileUpload::make('image_path')
                     ->image()
+                    ->disk('public')
                     ->directory('blog'),
                 Select::make('status')
                     ->options([

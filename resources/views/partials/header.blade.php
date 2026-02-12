@@ -16,6 +16,7 @@
         <li><a href="{{ url('/magang') }}" class="{{ request()->is('magang') ? 'active' : '' }}">Magang</a></li>
         <li><a href="{{ url('/dosen') }}" class="{{ request()->is('dosen') ? 'active' : '' }}">Dosen</a></li>
         <li><a href="{{ url('/beasiswa') }}" class="{{ request()->is('beasiswa') ? 'active' : '' }}">Beasiswa</a></li>
+        <li><a href="{{ url('/blog') }}" class="{{ request()->is('blog*') ? 'active' : '' }}">Blog</a></li>
         <li><a href="{{ url('/kontak') }}" class="{{ request()->is('kontak') ? 'active' : '' }}">Kontak</a></li>
       </ul>
       <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>

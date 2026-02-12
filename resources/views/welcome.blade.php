@@ -761,144 +761,221 @@
 
       </div>
 
-    </section><!-- /Portfolio Section -->
+{{-- ===================== PARTNERSHIP SECTION ===================== --}}
+<section id="partnership" class="partnership section">
+  <div class="container section-title" data-aos="fade-up">
+    <span class="partnership-badge">PARTNERSHIP</span>
+  </div>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials section">
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="swiper partnership-swiper">
+      <div class="swiper-wrapper align-items-center">
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Testimonials</h2>
-        <p>What they are saying about us<br></p>
-      </div><!-- End Section Title -->
+        @php
+          $partners = \App\Models\Partner::all();
+        @endphp
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="swiper init-swiper">
-          <script type="application/json" class="swiper-config">
-            {
-              "loop": true,
-              "speed": 600,
-              "autoplay": {
-                "delay": 5000
-              },
-              "slidesPerView": "auto",
-              "pagination": {
-                "el": ".swiper-pagination",
-                "type": "bullets",
-                "clickable": true
-              },
-              "breakpoints": {
-                "320": {
-                  "slidesPerView": 1,
-                  "spaceBetween": 40
-                },
-                "1200": {
-                  "slidesPerView": 3,
-                  "spaceBetween": 1
-                }
-              }
-            }
-          </script>
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium
-                  quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                </p>
-                <div class="profile mt-auto">
-                  <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                  <h3>Saul Goodman</h3>
-                  <h4>Ceo &amp; Founder</h4>
-                </div>
+        @foreach($partners as $p)
+          <div class="swiper-slide d-flex justify-content-center">
+            <a class="partner-card" href="{{ $p->website }}" target="_blank" aria-label="{{ $p->name }}">
+              <div class="partner-logo-wrap">
+                <img
+                  class="partner-logo"
+                  alt="{{ $p->name }}"
+                  loading="lazy"
+                  src="{{ asset('uploads/' . $p->logo) }}"
+                />
               </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis
-                  quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                </p>
-                <div class="profile mt-auto">
-                  <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                  <h3>Sara Wilsson</h3>
-                  <h4>Designer</h4>
-                </div>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim
-                  tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                </p>
-                <div class="profile mt-auto">
-                  <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                  <h3>Jena Karlis</h3>
-                  <h4>Store Owner</h4>
-                </div>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit
-                  minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-                </p>
-                <div class="profile mt-auto">
-                  <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                  <h3>Matt Brandon</h3>
-                  <h4>Freelancer</h4>
-                </div>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa
-                  labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                </p>
-                <div class="profile mt-auto">
-                  <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                  <h3>John Larson</h3>
-                  <h4>Entrepreneur</h4>
-                </div>
-              </div>
-            </div><!-- End testimonial item -->
-
+              <span>{{ $p->name }}</span>
+            </a>
           </div>
-          <div class="swiper-pagination"></div>
-        </div>
+        @endforeach
 
       </div>
 
-    </section><!-- /Testimonials Section -->
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</section>
+
+
+<style>
+  /* ====== Layout ====== */
+  .partnership{
+    padding: 60px 0;
+    background: #f8fbfe;
+  }
+  .partnership-badge{
+    display:inline-block;
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: rgba(1,41,112,.08);
+    color:#012970;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.08em;
+    margin-bottom: 12px;
+  }
+  .partnership .section-title{
+    text-align:center;
+    margin-bottom: 26px;
+  }
+  .partnership .section-title h2{
+    margin: 0;
+    color:#012970;
+    font-size: clamp(26px, 3.8vw, 44px);
+    font-weight: 800;
+  }
+
+  /* ====== Swiper ====== */
+  .partnership-swiper{
+    padding: 12px 6px 44px;
+  }
+  .partnership-swiper .swiper-slide{
+    width: 210px;           
+    display:flex;
+    justify-content:center;
+  }
+
+  /* ====== Card ====== */
+  .partner-card{
+    width: 200px;
+    height: 130px;
+    border-radius: 18px;
+    background: #fff;
+    border: 1px solid rgba(1,41,112,.10);
+    box-shadow: 0 10px 30px rgba(1,41,112,.08);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap: 10px;
+    text-decoration:none;
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    position:relative;
+    overflow:hidden;
+    will-change: transform;
+  }
+
+  /* SLOT logo biar semua sama tinggi */
+  .partner-logo-wrap{
+    width: 140px;
+    height: 54px;           
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .partner-logo{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    opacity: .85;
+    filter: grayscale(100%);
+    transform: translateY(0) scale(1);
+    transition: opacity .25s ease, filter .25s ease, transform .25s ease;
+  }
+
+  .partner-card span{
+    font-size: 14px;
+    font-weight: 800;
+    color:#012970;
+    opacity:.95;
+  }
+
+  /* Glow hover */
+  .partner-card::after{
+    content:"";
+    position:absolute;
+    inset:-40%;
+    background: radial-gradient(circle at 30% 30%, rgba(1,41,112,.18), transparent 55%);
+    opacity:0;
+    transition: opacity .25s ease;
+    pointer-events:none;
+  }
+
+  .partner-card:hover{
+    transform: translateY(-7px) scale(1.03);
+    border-color: rgba(1,41,112,.25);
+    box-shadow: 0 18px 55px rgba(1,41,112,.18);
+  }
+  .partner-card:hover::after{ opacity:1; }
+  .partner-card:hover .partner-logo{
+    opacity: 1;
+    filter: none;
+    transform: translateY(-2px) scale(1.06);
+  }
+
+  /* Pagination */
+  .partnership .swiper-pagination{
+    margin-top: 18px;
+    position: relative;
+  }
+  .partnership .swiper-pagination-bullet{
+    width: 11px;
+    height: 11px;
+    background:#fff;
+    opacity:1;
+    border:1px solid #012970;
+  }
+  .partnership .swiper-pagination-bullet-active{
+    background:#012970;
+  }
+</style>
+
+<script>
+  // 1) Fallback logo: SimpleIcons -> Clearbit -> teks pertama (jika semua gagal)
+  document.querySelectorAll('.partner-logo').forEach(img => {
+    const fallback = img.getAttribute('data-fallback');
+    let triedFallback = false;
+
+    img.addEventListener('error', () => {
+      if (!triedFallback && fallback) {
+        triedFallback = true;
+        img.src = fallback;
+        img.style.filter = 'grayscale(100%)';
+        img.style.opacity = '.85';
+        return;
+      }
+
+      // fallback terakhir: tampilkan teks brand (biar ga ada broken image)
+      const wrap = img.closest('.partner-logo-wrap');
+      if (wrap) {
+        wrap.innerHTML = '<div style="font-weight:900;color:#9aa3b2;font-size:18px;letter-spacing:.02em">LOGO</div>';
+      }
+    }, { once: false });
+  });
+
+  // 2) Swiper init
+  document.addEventListener("DOMContentLoaded", () => {
+    new Swiper(".partnership-swiper", {
+      loop: true,
+      speed: 900,
+      grabCursor: true,
+      slidesPerView: "auto",
+      spaceBetween: 18,
+      autoplay: {
+        delay: 1700,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true
+      },
+      pagination: {
+        el: ".partnership .swiper-pagination",
+        clickable: true
+      },
+      breakpoints: {
+        320: { spaceBetween: 14 },
+        480: { spaceBetween: 16 },
+        640: { spaceBetween: 18 },
+        992: { spaceBetween: 20 }
+      }
+    });
+  });
+</script>
+{{-- =================== END PARTNERSHIP SECTION =================== --}}
+
+
 
     <!-- Team Section -->
     <section id="team" class="team section">
@@ -1012,101 +1089,47 @@
 
         <div class="row gy-5">
 
-          <div class="col-xl-4 col-md-6">
-            <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="100">
-
-              <div class="post-img position-relative overflow-hidden">
-                <img src="assets/img/blog/blog-1.jpg" class="img-fluid" alt="">
-                <span class="post-date">December 12</span>
-              </div>
-
-              <div class="post-content d-flex flex-column">
-
-                <h3 class="post-title">Eum ad dolor et. Autem aut fugiat debitis</h3>
-
-                <div class="meta d-flex align-items-center">
-                  <div class="d-flex align-items-center">
-                    <i class="bi bi-person"></i> <span class="ps-2">Julia Parker</span>
-                  </div>
-                  <span class="px-3 text-black-50">/</span>
-                  <div class="d-flex align-items-center">
-                    <i class="bi bi-folder2"></i> <span class="ps-2">Politics</span>
-                  </div>
-                </div>
-
-                <hr>
-
-                <a href="{{ url('/blog-details') }}" class="readmore stretched-link"><span>Read More</span><i
-                    class="bi bi-arrow-right"></i></a>
-
-              </div>
-
-            </div>
-          </div><!-- End post item -->
-
-          <div class="col-xl-4 col-md-6">
-            <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="200">
-
-              <div class="post-img position-relative overflow-hidden">
-                <img src="assets/img/blog/blog-2.jpg" class="img-fluid" alt="">
-                <span class="post-date">July 17</span>
-              </div>
-
-              <div class="post-content d-flex flex-column">
-
-                <h3 class="post-title">Et repellendus molestiae qui est sed omnis</h3>
-
-                <div class="meta d-flex align-items-center">
-                  <div class="d-flex align-items-center">
-                    <i class="bi bi-person"></i> <span class="ps-2">Mario Douglas</span>
-                  </div>
-                  <span class="px-3 text-black-50">/</span>
-                  <div class="d-flex align-items-center">
-                    <i class="bi bi-folder2"></i> <span class="ps-2">Sports</span>
-                  </div>
-                </div>
-
-                <hr>
-
-                <a href="{{ url('/blog-details') }}" class="readmore stretched-link"><span>Read More</span><i
-                    class="bi bi-arrow-right"></i></a>
-
-              </div>
-
-            </div>
-          </div><!-- End post item -->
-
-          <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+          @forelse($blogPosts as $post)
+          <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ 100 * ($loop->index + 1) }}">
             <div class="post-item position-relative h-100">
 
               <div class="post-img position-relative overflow-hidden">
-                <img src="assets/img/blog/blog-3.jpg" class="img-fluid" alt="">
-                <span class="post-date">September 05</span>
+                @if($post->image_path)
+                  <img src="{{ asset('storage/' . $post->image_path) }}" class="img-fluid" alt="{{ $post->title }}">
+                @else
+                  <img src="assets/img/blog/blog-1.jpg" class="img-fluid" alt="{{ $post->title }}">
+                @endif
+                <span class="post-date">{{ $post->published_at?->format('M d') }}</span>
               </div>
 
               <div class="post-content d-flex flex-column">
 
-                <h3 class="post-title">Quia assumenda est et veritati tirana ploder</h3>
+                <h3 class="post-title">{{ Str::limit($post->title, 50) }}</h3>
 
                 <div class="meta d-flex align-items-center">
                   <div class="d-flex align-items-center">
-                    <i class="bi bi-person"></i> <span class="ps-2">Lisa Hunter</span>
+                    <i class="bi bi-person"></i> <span class="ps-2">{{ $post->author->name ?? 'Admin' }}</span>
                   </div>
                   <span class="px-3 text-black-50">/</span>
                   <div class="d-flex align-items-center">
-                    <i class="bi bi-folder2"></i> <span class="ps-2">Economics</span>
+                    <i class="bi bi-calendar"></i> <span class="ps-2">{{ $post->published_at?->format('M d, Y') }}</span>
                   </div>
                 </div>
 
                 <hr>
 
-                <a href="{{ url('/blog-details') }}" class="readmore stretched-link"><span>Read More</span><i
+                <a href="{{ route('blog.show', $post->slug) }}" class="readmore stretched-link"><span>Read More</span><i
                     class="bi bi-arrow-right"></i></a>
 
               </div>
 
             </div>
           </div><!-- End post item -->
+          @empty
+          <div class="col-12 text-center">
+            <p>Belum ada artikel blog yang diterbitkan.</p>
+          </div>
+          @endforelse
 
         </div>
 

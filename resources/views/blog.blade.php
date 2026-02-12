@@ -40,166 +40,46 @@
 
                         <div class="row gy-4">
 
+                            @forelse($blogPosts as $post)
                             <div class="col-12">
                                 <article>
 
+                                    @if($post->image_path)
                                     <div class="post-img">
-                                        <img src="assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
+                                        <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->title }}" class="img-fluid">
                                     </div>
+                                    @endif
 
                                     <h2 class="title">
-                                        <a href="{{ url('/blog-details') }}">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam
-                                            quia</a>
+                                        <a href="{{ route('blog.show', $post->slug) }}">{{ $post->title }}</a>
                                     </h2>
 
                                     <div class="meta-top">
                                         <ul>
                                             <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
-                                                    href="{{ url('/blog-details') }}">John Doe</a></li>
+                                                    href="{{ route('blog.show', $post->slug) }}">{{ $post->author->name ?? 'Admin' }}</a></li>
                                             <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a
-                                                    href="{{ url('/blog-details') }}"><time datetime="2022-01-01">Jan 1, 2022</time></a></li>
-                                            <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
-                                                    href="{{ url('/blog-details') }}">12 Comments</a></li>
+                                                    href="{{ route('blog.show', $post->slug) }}"><time datetime="{{ $post->published_at?->format('Y-m-d') }}">{{ $post->published_at?->format('M d, Y') }}</time></a></li>
                                         </ul>
                                     </div>
 
                                     <div class="content">
                                         <p>
-                                            Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium.
-                                            Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
-                                            Et eveniet enim. Qui velit est ea dolorem doloremque deleniti aperiam unde soluta. Est cum et
-                                            quod quos aut ut et sit sunt. Voluptate porro consequatur assumenda perferendis dolore.
+                                            {{ Str::limit(strip_tags($post->content), 250) }}
                                         </p>
 
                                         <div class="read-more">
-                                            <a href="{{ url('/blog-details') }}">Read More</a>
+                                            <a href="{{ route('blog.show', $post->slug) }}">Read More</a>
                                         </div>
                                     </div>
 
                                 </article>
                             </div><!-- End post list item -->
-
-                            <div class="col-12">
-
-                                <article>
-
-                                    <div class="post-img">
-                                        <img src="assets/img/blog/blog-2.jpg" alt="" class="img-fluid">
-                                    </div>
-
-                                    <h2 class="title">
-                                        <a href="{{ url('/blog-details') }}">Nisi magni odit consequatur autem nulla dolorem</a>
-                                    </h2>
-
-                                    <div class="meta-top">
-                                        <ul>
-                                            <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
-                                                    href="{{ url('/blog-details') }}">John Doe</a></li>
-                                            <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a
-                                                    href="{{ url('/blog-details') }}"><time datetime="2022-01-01">Jan 1, 2022</time></a></li>
-                                            <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
-                                                    href="{{ url('/blog-details') }}">12 Comments</a></li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="content">
-                                        <p>
-                                            Incidunt voluptate sit temporibus aperiam. Quia vitae aut sint ullam quis illum voluptatum et.
-                                            Quo libero rerum voluptatem pariatur nam.
-                                            Ad impedit qui officiis est in non aliquid veniam laborum. Id ipsum qui aut. Sit aliquam et quia
-                                            molestias laboriosam. Tempora nam odit omnis eum corrupti qui aliquid excepturi molestiae.
-                                            Facilis et sint quos sed voluptas. Maxime sed tempore enim omnis non alias odio quos distinctio.
-                                        </p>
-                                        <div class="read-more">
-                                            <a href="{{ url('/blog-details') }}">Read More</a>
-                                        </div>
-                                    </div>
-
-                                </article>
-
-                            </div><!-- End post list item -->
-
-                            <div class="col-12">
-
-                                <article>
-
-                                    <div class="post-img">
-                                        <img src="assets/img/blog/blog-3.jpg" alt="" class="img-fluid">
-                                    </div>
-
-                                    <h2 class="title">
-                                        <a href="{{ url('/blog-details') }}">Possimus soluta ut id suscipit ea ut. In quo quia et soluta libero sit
-                                            sint.</a>
-                                    </h2>
-
-                                    <div class="meta-top">
-                                        <ul>
-                                            <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
-                                                    href="{{ url('/blog-details') }}">John Doe</a></li>
-                                            <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a
-                                                    href="{{ url('/blog-details') }}"><time datetime="2022-01-01">Jan 1, 2022</time></a></li>
-                                            <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
-                                                    href="{{ url('/blog-details') }}">12 Comments</a></li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="content">
-                                        <p>
-                                            Aut iste neque ut illum qui perspiciatis similique recusandae non. Fugit autem dolorem labore
-                                            omnis et. Eum temporibus fugiat voluptate enim tenetur sunt omnis.
-                                            Doloremque est saepe laborum aut. Ipsa cupiditate ex harum at recusandae nesciunt. Ut dolores
-                                            velit.
-                                        </p>
-                                        <div class="read-more">
-                                            <a href="{{ url('/blog-details') }}">Read More</a>
-                                        </div>
-                                    </div>
-
-                                </article>
-
-                            </div><!-- End post list item -->
-
-                            <div class="col-12">
-
-                                <article>
-
-                                    <div class="post-img">
-                                        <img src="assets/img/blog/blog-4.jpg" alt="" class="img-fluid">
-                                    </div>
-
-                                    <h2 class="title">
-                                        <a href="{{ url('/blog-details') }}">Non rem rerum nam cum quo minus. Dolor distinctio deleniti explicabo
-                                            eius exercitationem.</a>
-                                    </h2>
-
-                                    <div class="meta-top">
-                                        <ul>
-                                            <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
-                                                    href="{{ url('/blog-details') }}">John Doe</a></li>
-                                            <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a
-                                                    href="{{ url('/blog-details') }}"><time datetime="2022-01-01">Jan 1, 2022</time></a></li>
-                                            <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
-                                                    href="{{ url('/blog-details') }}">12 Comments</a></li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="content">
-                                        <p>
-                                            Aspernatur rerum perferendis et sint. Voluptates cupiditate voluptas atque quae. Rem veritatis
-                                            rerum enim et autem. Saepe atque cum eligendi eaque iste omnis a qui.
-                                            Quia sed sunt. Ea asperiores expedita et et delectus voluptates rerum. Id saepe ut itaque quod
-                                            qui voluptas nobis porro rerum. Quam quia nesciunt qui aut est non omnis. Inventore occaecati et
-                                            quaerat magni itaque nam voluptas. Voluptatem ducimus sint id earum ut nesciunt sed corrupti
-                                            nemo.
-                                        </p>
-                                        <div class="read-more">
-                                            <a href="{{ url('/blog-details') }}">Read More</a>
-                                        </div>
-                                    </div>
-
-                                </article>
-
-                            </div><!-- End post list item -->
+                            @empty
+                            <div class="col-12 text-center">
+                                <p>Belum ada artikel blog yang diterbitkan.</p>
+                            </div>
+                            @endforelse
 
                         </div><!-- End blog posts list -->
 
@@ -207,25 +87,7 @@
 
                 </section><!-- /Blog Posts Section -->
 
-                <!-- Blog Pagination Section -->
-                <section id="blog-pagination" class="blog-pagination section">
 
-                    <div class="container">
-                        <div class="d-flex justify-content-center">
-                            <ul>
-                                <li><a href="#"><i class="bi bi-chevron-left"></i></a></li>
-                                <li><a href="#">1</a></li>
-                                <li><a href="#" class="active">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li>...</li>
-                                <li><a href="#">10</a></li>
-                                <li><a href="#"><i class="bi bi-chevron-right"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </section><!-- /Blog Pagination Section -->
 
             </div>
 
@@ -264,45 +126,17 @@
 
                         <h3 class="widget-title">Recent Posts</h3>
 
+                        @foreach($blogPosts->take(5) as $recent)
                         <div class="post-item">
-                            <img src="assets/img/blog/blog-recent-1.jpg" alt="" class="flex-shrink-0">
+                            @if($recent->image_path)
+                                <img src="{{ asset('storage/' . $recent->image_path) }}" alt="" class="flex-shrink-0">
+                            @endif
                             <div>
-                                <h4><a href="{{ url('/blog-details') }}">Nihil blanditiis at in nihil autem</a></h4>
-                                <time datetime="2020-01-01">Jan 1, 2020</time>
+                                <h4><a href="{{ route('blog.show', $recent->slug) }}">{{ $recent->title }}</a></h4>
+                                <time datetime="{{ $recent->published_at?->format('Y-m-d') }}">{{ $recent->published_at?->format('M d, Y') }}</time>
                             </div>
                         </div><!-- End recent post item-->
-
-                        <div class="post-item">
-                            <img src="assets/img/blog/blog-recent-2.jpg" alt="" class="flex-shrink-0">
-                            <div>
-                                <h4><a href="{{ url('/blog-details') }}">Quidem autem et impedit</a></h4>
-                                <time datetime="2020-01-01">Jan 1, 2020</time>
-                            </div>
-                        </div><!-- End recent post item-->
-
-                        <div class="post-item">
-                            <img src="assets/img/blog/blog-recent-3.jpg" alt="" class="flex-shrink-0">
-                            <div>
-                                <h4><a href="{{ url('/blog-details') }}">Id quia et et ut maxime similique occaecati ut</a></h4>
-                                <time datetime="2020-01-01">Jan 1, 2020</time>
-                            </div>
-                        </div><!-- End recent post item-->
-
-                        <div class="post-item">
-                            <img src="assets/img/blog/blog-recent-4.jpg" alt="" class="flex-shrink-0">
-                            <div>
-                                <h4><a href="{{ url('/blog-details') }}">Laborum corporis quo dara net para</a></h4>
-                                <time datetime="2020-01-01">Jan 1, 2020</time>
-                            </div>
-                        </div><!-- End recent post item-->
-
-                        <div class="post-item">
-                            <img src="assets/img/blog/blog-recent-5.jpg" alt="" class="flex-shrink-0">
-                            <div>
-                                <h4><a href="{{ url('/blog-details') }}">Et dolores corrupti quae illo quod dolor</a></h4>
-                                <time datetime="2020-01-01">Jan 1, 2020</time>
-                            </div>
-                        </div><!-- End recent post item-->
+                        @endforeach
 
                     </div><!--/Recent Posts Widget -->
 
