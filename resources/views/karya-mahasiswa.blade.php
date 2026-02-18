@@ -36,7 +36,7 @@
                     <li data-filter="*" class="filter-active">Semua</li>
                     <li data-filter=".filter-web">Web App</li>
                     <li data-filter=".filter-mobile">Mobile App</li>
-                    <li data-filter=".filter-ai">AI & IoT</li>
+                    <li data-filter=".filter-iot">IoT</li>
                 </ul><!-- End Portfolio Filters -->
 
                 <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">

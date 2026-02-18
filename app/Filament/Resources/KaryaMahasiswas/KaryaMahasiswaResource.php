@@ -12,6 +12,7 @@ use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Components\Utilities\Set;
@@ -53,7 +54,13 @@ class KaryaMahasiswaResource extends Resource
                 RichEditor::make('description')
                     ->columnSpanFull(),
                 TextInput::make('link'),
-                TextInput::make('category'),
+                Select::make('category')
+                    ->options([
+                        'Web App' => 'Web App',
+                        'Mobile App' => 'Mobile App',
+                        'IoT' => 'IoT',
+                    ])
+                    ->required(),
             ]);
     }
 

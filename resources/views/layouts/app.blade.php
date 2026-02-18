@@ -25,6 +25,8 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
   @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -48,8 +50,58 @@
     .hero {
         padding-top: 100px !important;
     }
-    
 
+    /* WhatsApp Floating Button */
+    .whatsapp-float {
+        position: fixed;
+        bottom: 30px;
+        right: 80px;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        background-color: #fff;
+        color: #444 !important;
+        padding: 6px 20px 6px 6px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-family: 'Outfit', sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .whatsapp-float:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        background-color: #fcfcfc;
+    }
+    .whatsapp-float i {
+        background-color: #25d366;
+        color: #fff;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        margin-right: 12px;
+        box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+    }
+    @media (max-width: 768px) {
+        .whatsapp-float {
+            bottom: 20px;
+            right: 70px;
+            padding: 5px 15px 5px 5px;
+            font-size: 13px;
+        }
+        .whatsapp-float i {
+            width: 32px;
+            height: 32px;
+            font-size: 16px;
+            margin-right: 8px;
+        }
+    }
   </style>
 </head>
 
@@ -75,6 +127,8 @@
   <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
   <script src="https://unpkg.com/isotope-layout@3.0.6/dist/isotope.pkgd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -103,6 +157,12 @@
   </script>
 
   @yield('extra-js')
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://api.whatsapp.com/send/?phone=628111223738&text=Hai+PoltekMETA%2C+mau+tanya+dong%3F&type=phone_number&app_absent=0" class="whatsapp-float" target="_blank">
+    <i class="bi bi-whatsapp"></i>
+    <span>Tanya Politeknik Meta Industri</span>
+  </a>
 
 </body>
 

@@ -105,4 +105,58 @@
             </div>
         </div>
     </section><!-- /Contact Section -->
+@section('extra-js')
+<script>
+document.querySelector('.php-email-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    let form = this;
+    let formData = new FormData(form);
+    let loading = form.querySelector('.loading');
+    let submitBtn = form.querySelector('button[type="submit"]');
+    
+    loading.classList.add('d-block');
+    submitBtn.disabled = true;
+    
+    fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+        }
+    })
+    .then(response => response.text())
+    .then(data => {
+        loading.classList.remove('d-block');
+        submitBtn.disabled = false;
+        
+        if (data.trim() === 'OK') {
+            Swal.fire({
+                title: 'Berhasil Terkirim!',
+                text: 'Pesan Anda telah kami terima. Kami akan segera menghubungi Anda.',
+                icon: 'success',
+                confirmButtonColor: '#4154f1',
+                timer: 5000,
+                timerProgressBar: true
+            });
+            form.reset();
+        } else {
+            throw new Error(data || 'Terjadi kesalahan saat mengirim pesan.');
+        }
+    })
+    .catch(error => {
+        loading.classList.remove('d-block');
+        submitBtn.disabled = false;
+        
+        Swal.fire({
+            title: 'Gagal Mengirim',
+            text: 'Terjadi kesalahan: ' + error.message,
+            icon: 'error',
+            confirmButtonColor: '#dc3545'
+        });
+    });
+});
+</script>
+@endsection
 @endsection
