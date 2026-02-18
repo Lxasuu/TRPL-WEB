@@ -18,7 +18,8 @@ Route::get('/', function () {
         ->latest('published_at')
         ->take(3)
         ->get();
-    return view('welcome', compact('stats', 'faqs', 'blogPosts'));
+    $karyas = KaryaMahasiswa::latest()->take(6)->get();
+    return view('welcome', compact('stats', 'faqs', 'blogPosts', 'karyas'));
 });
 
 Route::get('/about', function () {
@@ -54,6 +55,23 @@ Route::get('/beasiswa', function () {
 
 Route::get('/kontak', function () {
     return view('kontak');
+});
+
+Route::post('/kontak', function (Illuminate\Http\Request $request) {
+    try {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'subject' => 'required|string|max:255',
+            'message' => 'required|string',
+        ]);
+
+        \App\Models\ContactMessage::create($validated);
+
+        return 'OK';
+    } catch (\Exception $e) {
+        return response($e->getMessage(), 400);
+    }
 });
 
 Route::get('/blog', function () {

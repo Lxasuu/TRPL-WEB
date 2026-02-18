@@ -30,6 +30,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->brandName('TRPL Admin')
             ->brandLogo(asset('assets/img/logo-meta copy.png'))
             ->brandLogoHeight('3rem')
             ->colors([

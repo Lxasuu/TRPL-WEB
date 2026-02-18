@@ -33,21 +33,29 @@
         <div class="container">
             <div class="row gy-4">
                 @foreach($dosens as $dosen)
+                @php
+                    $imageUrl = str_starts_with($dosen->image_path, 'assets/') 
+                        ? asset($dosen->image_path) 
+                        : Storage::url($dosen->image_path);
+                @endphp
                 <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="{{ $loop->iteration * 100 }}">
                     <div class="team-member">
                         <div class="member-img">
-                            <img src="{{ asset($dosen->image_path) }}" class="img-fluid" alt="{{ $dosen->name }}">
+                            <img src="{{ $imageUrl }}" class="img-fluid" alt="{{ $dosen->name }}">
+                            @if($dosen->social_links)
                             <div class="social">
-                                <a href=""><i class="bi bi-twitter-x"></i></a>
-                                <a href=""><i class="bi bi-facebook"></i></a>
-                                <a href=""><i class="bi bi-instagram"></i></a>
-                                <a href=""><i class="bi bi-linkedin"></i></a>
+                                @foreach($dosen->social_links as $platform => $url)
+                                    @if($url)
+                                        <a href="{{ $url }}"><i class="bi bi-{{ strtolower($platform) == 'twitter-x' ? 'twitter-x' : (strtolower($platform) == 'linkedin' ? 'linkedin' : strtolower($platform)) }}"></i></a>
+                                    @endif
+                                @endforeach
                             </div>
+                            @endif
                         </div>
                         <div class="member-info">
                             <h4>{{ $dosen->name }}</h4>
                             <span>{{ $dosen->title }}</span>
-                            <p>{{ $dosen->bio }}</p>
+                            <div class="bio-content">{!! $dosen->bio !!}</div>
                         </div>
                     </div>
                 </div><!-- End Team Member -->

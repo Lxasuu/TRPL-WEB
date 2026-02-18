@@ -46,6 +46,7 @@ class DosenResource extends Resource
                     ->columnSpanFull(),
                 FileUpload::make('image_path')
                     ->image()
+                    ->disk('public')
                     ->directory('dosen'),
                 KeyValue::make('social_links')
                     ->keyLabel('Platform')

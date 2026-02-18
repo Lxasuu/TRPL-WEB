@@ -73,7 +73,7 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <form action="#" method="post" class="php-email-form" data-aos="fade-up"
+                    <form action="{{ url('/kontak') }}" method="post" class="php-email-form" data-aos="fade-up"
                         data-aos-delay="200">
                         @csrf
                         <div class="row gy-4">

@@ -711,49 +711,27 @@
 
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-web">
+            @foreach($karyas as $karya)
+            @php
+                $imageUrl = str_starts_with($karya->image_path, 'assets/') 
+                    ? asset($karya->image_path) 
+                    : Storage::url($karya->image_path);
+            @endphp
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-{{ strtolower(explode(' ', $karya->category)[0] ?? 'web') }}">
               <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/app-1.jpg" class="img-fluid" alt="">
+                <img src="{{ $imageUrl }}" class="img-fluid" alt="{{ $karya->title }}">
                 <div class="portfolio-info">
-                  <h4>Sistem Informasi Akademik</h4>
-                  <p>Web App - Laravel & React</p>
-                  <a href="assets/img/portfolio/app-1.jpg" title="Sistem Informasi Akademik"
-                    data-gallery="portfolio-gallery-web" class="glightbox preview-link"><i
+                  <h4>{{ $karya->title }}</h4>
+                  <p>{{ $karya->category }} - {{ $karya->student_name }}</p>
+                  <a href="{{ $imageUrl }}" title="{{ $karya->title }}"
+                    data-gallery="portfolio-gallery-{{ strtolower(explode(' ', $karya->category)[0] ?? 'web') }}" class="glightbox preview-link"><i
                       class="bi bi-zoom-in"></i></a>
                   <a href="{{ url('/portfolio-details') }}" title="More Details" class="details-link"><i
                       class="bi bi-link-45deg"></i></a>
                 </div>
               </div>
             </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-mobile">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/product-1.jpg" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>E-Commerce Mobile</h4>
-                  <p>Mobile App - Flutter</p>
-                  <a href="assets/img/portfolio/product-1.jpg" title="E-Commerce Mobile"
-                    data-gallery="portfolio-gallery-mobile" class="glightbox preview-link"><i
-                      class="bi bi-zoom-in"></i></a>
-                  <a href="{{ url('/portfolio-details') }}" title="More Details" class="details-link"><i
-                      class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-ai">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/branding-1.jpg" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>Smart Agriculture IoT</h4>
-                  <p>AI & IoT - Python & Arduino</p>
-                  <a href="assets/img/portfolio/branding-1.jpg" title="Smart Agriculture IoT"
-                    data-gallery="portfolio-gallery-ai" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="{{ url('/portfolio-details') }}" title="More Details" class="details-link"><i
-                      class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
+            @endforeach
 
           </div><!-- End Portfolio Container -->
 

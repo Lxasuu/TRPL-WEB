@@ -13,8 +13,8 @@ use Filament\Actions\ViewAction;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Get;
-use Filament\Forms\Set;
+use Filament\Schemas\Components\Utilities\Get;
+use Filament\Schemas\Components\Utilities\Set;
 use Illuminate\Support\Str;
 use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\TextEntry;
@@ -48,6 +48,7 @@ class KaryaMahasiswaResource extends Resource
                     ->required(),
                 FileUpload::make('image_path')
                     ->image()
+                    ->disk('public')
                     ->directory('karya'),
                 RichEditor::make('description')
                     ->columnSpanFull(),
