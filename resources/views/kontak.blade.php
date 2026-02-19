@@ -7,6 +7,16 @@
 @section('content')
     <!-- Page Title -->
     <div class="page-title" data-aos="fade">
+        <div class="heading">
+            <div class="container">
+                <div class="row d-flex justify-content-center text-center">
+                    <div class="col-lg-8">
+                        <h1>Kontak Kami</h1>
+                        <p class="mb-0">Punya pertanyaan? Kami siap membantu Anda. Hubungi kami melalui kanal di bawah ini.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <nav class="breadcrumbs">
             <div class="container">
                 <ol>
@@ -15,17 +25,6 @@
                 </ol>
             </div>
         </nav>
-        <div class="heading">
-            <div class="container">
-                <div class="row d-flex justify-content-center text-center">
-                    <div class="col-lg-8">
-                        <h1>Kontak Kami</h1>
-                        <p class="mb-0">Punya pertanyaan? Kami siap membantu Anda. Hubungi kami melalui kanal di
-                            bawah ini.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div><!-- End Page Title -->
 
     <!-- Contact Section -->

@@ -5,6 +5,16 @@
 @section('content')
     <!-- Page Title -->
     <div class="page-title" data-aos="fade">
+        <div class="heading">
+            <div class="container">
+                <div class="row d-flex justify-content-center text-center">
+                    <div class="col-lg-8">
+                        <h1>Beasiswa</h1>
+                        <p class="mb-0">Program bantuan pendidikan untuk mahasiswa berprestasi dan kurang mampu.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <nav class="breadcrumbs">
             <div class="container">
                 <ol>
@@ -13,16 +23,6 @@
                 </ol>
             </div>
         </nav>
-        <div class="heading">
-            <div class="container">
-                <div class="row d-flex justify-content-center text-center">
-                    <div class="col-lg-8">
-                        <h1>Beasiswa</h1>
-                        <p class="mb-0"></p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div><!-- End Page Title -->
 
     <section id="beasiswa" class="beasiswa section">

@@ -885,6 +885,139 @@
     transform: translateY(-2px) scale(1.06);
   }
 
+
+  /* ====== Premium Dosen Swiper ====== */
+  .dosen-swiper {
+    padding: 20px 10px 80px;
+    position: relative;
+  }
+
+  /* Premium Card Design */
+  .team-member {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  }
+
+  .team-member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    border-color: rgba(65, 84, 241, 0.1);
+  }
+
+  .member-img {
+    width: 100%;
+    aspect-ratio: 4 / 5; /* Professional portrait ratio */
+    overflow: hidden;
+    position: relative;
+    background: #f8f9fa;
+  }
+
+  .member-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  .team-member:hover .member-img img {
+    transform: scale(1.08);
+  }
+
+  .member-info {
+    padding: 25px 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(to bottom, #fff, #fafbff);
+  }
+
+  .member-info h4 {
+    margin: 0 0 8px 0;
+    font-size: 19px;
+    font-weight: 800;
+    color: #012970;
+    line-height: 1.3;
+  }
+
+  .member-info span {
+    font-size: 13px;
+    font-weight: 600;
+    color: #4154f1;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .member-info p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Swiper Pagination */
+  .dosen-swiper .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: #dee2e6;
+    opacity: 1;
+    transition: all 0.3s ease;
+  }
+
+  .dosen-swiper .swiper-pagination-bullet-active {
+    width: 30px;
+    border-radius: 5px;
+    background: #4154f1;
+  }
+
+  .btn-view-all {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 35px;
+    border-radius: 50px;
+    background: #012970;
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 4px 15px rgba(1, 41, 112, 0.2);
+    letter-spacing: 0.5px;
+  }
+  
+  .btn-view-all:hover {
+    background: #4154f1;
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(65, 84, 241, 0.25);
+  }
+  
+  .btn-view-all i {
+    margin-left: 10px;
+    font-size: 18px;
+    transition: transform 0.3s ease;
+  }
+  
+  .btn-view-all:hover i {
+    transform: translateX(5px);
+  }
+
+
   /* Pagination */
   .partnership .swiper-pagination{
     margin-top: 18px;
@@ -949,6 +1082,35 @@
         992: { spaceBetween: 20 }
       }
     });
+
+    new Swiper(".dosen-swiper", {
+      speed: 600,
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false
+      },
+      slidesPerView: "auto",
+      pagination: {
+        el: ".dosen-swiper .swiper-pagination",
+        type: "bullets",
+        clickable: true
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 20
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 20
+        },
+        1200: {
+          slidesPerView: 4,
+          spaceBetween: 20
+        }
+      }
+    });
   });
 </script>
 {{-- =================== END PARTNERSHIP SECTION =================== --}}
@@ -966,88 +1128,40 @@
 
       <div class="container">
 
-        <div class="row gy-4">
+        <div class="swiper dosen-swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
 
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-            <div class="team-member">
-              <div class="member-img">
-                <img src="assets/img/team/manase-sahat.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter-x"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
+            @foreach($dosens as $dosen)
+            <div class="swiper-slide h-auto">
+              <div class="team-member">
+                <div class="member-img">
+                  @if($dosen->image_path)
+                    <img src="{{ asset('storage/' . $dosen->image_path) }}" class="img-fluid" alt="{{ $dosen->name }}">
+                  @else
+                    <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="{{ $dosen->name }}">
+                  @endif
+                  <div class="social">
+                    @if($dosen->twitter) <a href="{{ $dosen->twitter }}"><i class="bi bi-twitter-x"></i></a> @endif
+                    @if($dosen->facebook) <a href="{{ $dosen->facebook }}"><i class="bi bi-facebook"></i></a> @endif
+                    @if($dosen->instagram) <a href="{{ $dosen->instagram }}"><i class="bi bi-instagram"></i></a> @endif
+                    @if($dosen->linkedin) <a href="{{ $dosen->linkedin }}"><i class="bi bi-linkedin"></i></a> @endif
+                  </div>
+                </div>
+                <div class="member-info">
+                  <h4>{{ $dosen->name }}</h4>
+                  <span>{{ $dosen->title }}</span>
+                  <p>{{ $dosen->description }}</p>
                 </div>
               </div>
-              <div class="member-info">
-                <h4>Manase Sahat H. S., M.Kom.</h4>
-                <span>Koordinator Prodi | Lektor | S2</span>
-                <p>Dosen Tetap Program Studi Teknologi Rekayasa Perangkat Lunak. Berfokus pada pengembangan sistem
-                  informasi industri.</p>
-              </div>
-            </div>
-          </div><!-- End Team Member -->
+            </div><!-- End Swiper Slide -->
+            @endforeach
 
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-            <div class="team-member">
-              <div class="member-img">
-                <img src="assets/img/team/nita.png" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter-x"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Nita Winda Sari, S.Kom., M.Kom.</h4>
-                <span>Dosen Tetap | S2</span>
-                <p>Dosen Tetap Program Studi Teknologi Rekayasa Perangkat Lunak. Berfokus pada pengajaran dan penelitian
-                  di bidang teknologi rekayasa perangkat lunak.</p>
-              </div>
-            </div>
-          </div><!-- End Team Member -->
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
 
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
-            <div class="team-member">
-              <div class="member-img">
-                <img src="assets/img/team/fritz-gamaliel.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter-x"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Fritz Gamaliel, S.Kom., M.T.</h4>
-                <span>Lektor | S2</span>
-                <p>Dosen Tetap Program Studi Teknologi Rekayasa Perangkat Lunak. Berfokus pada pengembangan sistem
-                  berbasis teknologi informasi dan rekayasa perangkat lunak.</p>
-              </div>
-            </div>
-          </div><!-- End Team Member -->
-
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
-            <div class="team-member">
-              <div class="member-img">
-                <img src="assets/img/team/miswadi.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter-x"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Miswadi, S.Kom., M.Kom.</h4>
-                <span>Dosen Tetap | S2</span>
-                <p>Dosen Tetap Program Studi Teknologi Rekayasa Perangkat Lunak. Berfokus pada implementasi sistem
-                  informasi dan manajemen data industri.</p>
-              </div>
-            </div>
-          </div><!-- End Team Member -->
-
+        <div class="text-center mt-5" data-aos="fade-up">
+          <a href="/dosen" class="btn-view-all">Lihat Semua Dosen <i class="bi bi-arrow-right"></i></a>
         </div>
 
       </div>

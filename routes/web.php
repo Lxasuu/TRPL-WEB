@@ -19,7 +19,8 @@ Route::get('/', function () {
         ->take(3)
         ->get();
     $karyas = KaryaMahasiswa::latest()->take(6)->get();
-    return view('welcome', compact('stats', 'faqs', 'blogPosts', 'karyas'));
+    $dosens = Dosen::where('is_active', true)->get();
+    return view('welcome', compact('stats', 'faqs', 'blogPosts', 'karyas', 'dosens'));
 });
 
 Route::get('/about', function () {

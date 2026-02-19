@@ -7,14 +7,6 @@
 @section('content')
     <!-- Page Title -->
     <div class="page-title" data-aos="fade">
-        <nav class="breadcrumbs">
-            <div class="container">
-                <ol>
-                    <li><a href="{{ url('/') }}">Home</a></li>
-                    <li class="current">Tentang Kami</li>
-                </ol>
-            </div>
-        </nav>
         <div class="heading">
             <div class="container">
                 <div class="row d-flex justify-content-center text-center">
@@ -25,6 +17,14 @@
                 </div>
             </div>
         </div>
+        <nav class="breadcrumbs">
+            <div class="container">
+                <ol>
+                    <li><a href="{{ url('/') }}">Home</a></li>
+                    <li class="current">Tentang Kami</li>
+                </ol>
+            </div>
+        </nav>
     </div><!-- End Page Title -->
 
     <!-- About Section -->

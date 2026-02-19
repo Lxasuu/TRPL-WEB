@@ -43,12 +43,27 @@
         -webkit-backdrop-filter: blur(10px) !important;
         box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05) !important;
     }
-    .page-title nav {
-        padding-top: 120px !important;
-    }
-    /* Restrict hero padding to prevent large gap if needed */
-    .hero {
+    /* Fixed Header Spacing Fixes */
+    .page-title {
         padding-top: 100px !important;
+        position: relative;
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(255, 255, 255, 1) 100%) !important;
+    }
+
+    .page-title .heading {
+        padding: 40px 0 20px 0 !important;
+    }
+
+    .page-title .breadcrumbs {
+        padding: 15px 0 !important;
+        background: rgba(0, 0, 0, 0.02);
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    /* Restrict hero padding to prevent large gap */
+    .hero {
+        padding-top: 120px !important;
     }
 
     /* WhatsApp Floating Button */
@@ -101,6 +116,34 @@
             font-size: 16px;
             margin-right: 8px;
         }
+    }
+
+    /* Blog Image Standardization */
+    .recent-posts .post-img img {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+    }
+    
+    /* Ensure the container height matches */
+    .recent-posts .post-item {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .recent-posts .post-content {
+        flex-grow: 1;
+    }
+
+    /* Karya Mahasiswa Image Standardization */
+    .portfolio-content img {
+        width: 100%;
+        aspect-ratio: 3 / 2;
+        object-fit: cover;
+        object-position: center;
+        display: block;
     }
   </style>
 </head>
