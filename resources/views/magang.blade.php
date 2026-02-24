@@ -51,8 +51,8 @@
                                 <div class="magang-period-title">{{ strtoupper($period) }}</div>
                                 <div class="magang-period-meta">Total Mahasiswa: {{ $students->count() }}</div>
                             </div>
-                            <div class="toggle-icon">
-                                <i class="bi bi-chevron-down"></i>
+                            <div class="toggle-indicator">
+                                <i class="bi bi-plus-lg"></i>
                             </div>
                         </div>
 
@@ -135,13 +135,14 @@
             font-weight: 500;
         }
 
-        .toggle-icon i {
+        .toggle-indicator i {
             font-size: 1.2rem;
             color: #4154f1;
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .magang-period-block.active .toggle-icon i {
+        .magang-period-block.active .toggle-indicator i {
+            color: #ff4917;
             transform: rotate(180deg);
         }
 
@@ -260,7 +261,18 @@
     // Manual Toggle Function (Reliable across browsers/templates)
     function togglePeriod(id) {
         const block = document.getElementById('block-' + id);
+        const icon = block.querySelector('.toggle-indicator i');
+        
         block.classList.toggle('active');
+        
+        // Swap icon
+        if (block.classList.contains('active')) {
+            icon.classList.remove('bi-plus-lg');
+            icon.classList.add('bi-dash-lg');
+        } else {
+            icon.classList.remove('bi-dash-lg');
+            icon.classList.add('bi-plus-lg');
+        }
     }
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -271,6 +283,11 @@
         // Open first block by default
         if (blocks.length > 0) {
             blocks[0].classList.add('active');
+            const firstIcon = blocks[0].querySelector('.toggle-indicator i');
+            if (firstIcon) {
+                firstIcon.classList.remove('bi-plus-lg');
+                firstIcon.classList.add('bi-dash-lg');
+            }
         }
 
         if (searchInput) {

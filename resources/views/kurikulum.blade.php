@@ -158,35 +158,235 @@
                 Total SKS: <strong>152</strong>
             </div>
 
-            @foreach($mataKuliahs as $semester => $courses)
-            <div class="semester-block semester-{{ $semester }}">
-                <div class="semester-title">SEMESTER {{ $semester }}</div>
-                <div class="semester-meta">Total MK: {{ $courses->count() }} | Total SKS: {{ $courses->sum('sks') }}</div>
-
-                <div class="table-responsive">
-                    <table class="kurikulum-table">
-                        <thead>
-                            <tr>
-                                <th>Kode</th>
-                                <th>Mata Kuliah</th>
-                                <th>SKS</th>
-                                <th>Kategori</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($courses as $mk)
-                            <tr>
-                                <td class="kurikulum-kode">{{ $mk->kode }}</td>
-                                <td>{{ $mk->nama }}</td>
-                                <td class="kurikulum-sks">{{ $mk->sks }}</td>
-                                <td>{{ $mk->category }}</td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+            <div class="kurikulum-container">
+                @foreach($mataKuliahs as $semester => $courses)
+                <div class="semester-accordion-item" id="semester-block-{{ $semester }}">
+                    <div class="semester-header d-flex justify-content-between align-items-center" onclick="toggleSemester({{ $semester }})">
+                        <div class="header-content">
+                            <div class="semester-title">SEMESTER {{ $semester }}</div>
+                            <div class="semester-meta">Total MK: {{ $courses->count() }} | Total SKS: {{ $courses->sum('sks') }}</div>
+                        </div>
+                        <div class="toggle-indicator">
+                            <i class="bi bi-plus-lg"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="semester-content">
+                        <div class="table-responsive">
+                            <table class="kurikulum-table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Kode</th>
+                                        <th>Mata Kuliah</th>
+                                        <th>SKS</th>
+                                        <th>Kategori</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($courses as $mk)
+                                    <tr>
+                                        <td class="kurikulum-kode" data-label="Kode">{{ $mk->kode }}</td>
+                                        <td data-label="Mata Kuliah">{{ $mk->nama }}</td>
+                                        <td class="kurikulum-sks" data-label="SKS">{{ $mk->sks }}</td>
+                                        <td data-label="Kategori">{{ $mk->category }}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
+                @endforeach
             </div>
-            @endforeach
         </div>
     </section>
+
+    <style>
+        .kurikulum-container {
+            margin-top: 30px;
+        }
+
+        .semester-accordion-item {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid #f1f5f9;
+        }
+
+        .semester-accordion-item:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .semester-header {
+            padding: 25px 30px;
+            cursor: pointer;
+            background: #fff;
+            user-select: none;
+            transition: background 0.2s;
+        }
+
+        .semester-header:hover {
+            background: #f8fafc;
+        }
+
+        .semester-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #012970;
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+
+        .semester-meta {
+            font-size: 13px;
+            color: #64748b;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .toggle-indicator i {
+            font-size: 1.4rem;
+            color: #4154f1;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .semester-accordion-item.active .toggle-indicator i {
+            color: #ff4917;
+            transform: rotate(180deg);
+        }
+
+        .semester-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+            opacity: 0;
+            background: #fff;
+        }
+
+        .semester-accordion-item.active .semester-content {
+            max-height: 2000px; /* High enough to fit any table */
+            opacity: 1;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .kurikulum-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .kurikulum-table thead th {
+            background: #f8fafc;
+            padding: 15px 30px;
+            color: #64748b;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #f1f5f9;
+        }
+
+        .kurikulum-table tbody td {
+            padding: 20px 30px;
+            color: #334155;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 0.95rem;
+        }
+
+        .kurikulum-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .kurikulum-kode {
+            font-weight: 700;
+            color: #4154f1 !important;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem !important;
+        }
+
+        .kurikulum-sks {
+            font-weight: 700;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .kurikulum-table thead {
+                display: none;
+            }
+            .kurikulum-table tbody tr {
+                display: block;
+                padding: 20px;
+                border-bottom: 1px solid #f1f5f9;
+            }
+            .kurikulum-table tbody td {
+                display: block;
+                padding: 10px 0;
+                text-align: right;
+                border: none;
+                position: relative;
+                font-size: 14px;
+            }
+            .kurikulum-table tbody td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 0;
+                font-weight: 800;
+                color: #94a3b8;
+                text-transform: uppercase;
+                font-size: 10px;
+            }
+            .semester-header {
+                padding: 20px;
+            }
+        }
+    </style>
+
+    <script>
+        function toggleSemester(id) {
+            const block = document.getElementById('semester-block-' + id);
+            const icon = block.querySelector('.toggle-indicator i');
+            
+            // Close other semesters and reset their icons
+            const allBlocks = document.querySelectorAll('.semester-accordion-item');
+            allBlocks.forEach(b => {
+                if (b.id !== 'semester-block-' + id) {
+                    b.classList.remove('active');
+                    const otherIcon = b.querySelector('.toggle-indicator i');
+                    if (otherIcon) {
+                        otherIcon.classList.remove('bi-dash-lg');
+                        otherIcon.classList.add('bi-plus-lg');
+                    }
+                }
+            });
+
+            block.classList.toggle('active');
+            
+            // Swap icon
+            if (block.classList.contains('active')) {
+                icon.classList.remove('bi-plus-lg');
+                icon.classList.add('bi-dash-lg');
+            } else {
+                icon.classList.remove('bi-dash-lg');
+                icon.classList.add('bi-plus-lg');
+            }
+        }
+
+        // Open Semester 1 by default
+        document.addEventListener('DOMContentLoaded', () => {
+            const sem1 = document.getElementById('semester-block-1');
+            if (sem1) {
+                sem1.classList.add('active');
+                const icon = sem1.querySelector('.toggle-indicator i');
+                if (icon) {
+                    icon.classList.remove('bi-plus-lg');
+                    icon.classList.add('bi-dash-lg');
+                }
+            }
+        });
+    </script>
 @endsection
