@@ -6,7 +6,7 @@ use App\Models\Stat;
 use App\Models\Dosen;
 use App\Models\MataKuliah;
 use App\Models\KaryaMahasiswa;
-use App\Models\PenempatanMagang;
+use App\Models\PeriodeMagang;
 use App\Models\Beasiswa;
 use App\Models\Faq;
 use App\Models\BlogPost;
@@ -40,7 +40,7 @@ Route::get('/karya-mahasiswa', function () {
 });
 
 Route::get('/magang', function () {
-    $magangs = PenempatanMagang::all();
+    $magangs = PeriodeMagang::all()->groupBy(fn($item) => $item->formatted_period);
     return view('magang', compact('magangs'));
 });
 

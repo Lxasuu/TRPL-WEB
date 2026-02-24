@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('penempatan_magangs', function (Blueprint $table) {
+        Schema::create('periode_magangs', function (Blueprint $table) {
             $table->id();
-            $table->string('company_name');
+            $table->string('student_name');
+            $table->string('nim');
+            $table->string('internship_place');
             $table->string('location')->nullable();
-            $table->string('academic_year')->nullable();
-            $table->json('student_list')->nullable();
+            $table->date('start_date');
+            $table->date('end_date');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('penempatan_magangs');
+        Schema::dropIfExists('periode_magangs');
     }
 };

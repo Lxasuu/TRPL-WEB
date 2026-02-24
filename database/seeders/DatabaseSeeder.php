@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             StatSeeder::class,
             DosenSeeder::class,
             MataKuliahSeeder::class,
-            PenempatanMagangSeeder::class,
+            PeriodeMagangSeeder::class,
             KaryaMahasiswaSeeder::class,
             BeasiswaSeeder::class,
             FaqSeeder::class,

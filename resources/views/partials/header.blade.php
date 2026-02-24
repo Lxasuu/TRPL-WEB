@@ -13,7 +13,7 @@
         <li><a href="{{ url('/about') }}" class="{{ request()->is('about') ? 'active' : '' }}">Tentang</a></li>
         <li><a href="{{ url('/kurikulum') }}" class="{{ request()->is('kurikulum') ? 'active' : '' }}">Kurikulum</a></li>
         <li><a href="{{ url('/karya-mahasiswa') }}" class="{{ request()->is('karya-mahasiswa') ? 'active' : '' }}">Karya Mahasiswa</a></li>
-        <li><a href="{{ url('/magang') }}" class="{{ request()->is('magang') ? 'active' : '' }}">Magang</a></li>
+        <li><a href="{{ url('/magang') }}" class="{{ request()->is('magang') ? 'active' : '' }}">Periode Magang</a></li>
         <li><a href="{{ url('/dosen') }}" class="{{ request()->is('dosen') ? 'active' : '' }}">Dosen</a></li>
         <li><a href="{{ url('/beasiswa') }}" class="{{ request()->is('beasiswa') ? 'active' : '' }}">Beasiswa</a></li>
         <li><a href="{{ url('/blog') }}" class="{{ request()->is('blog*') ? 'active' : '' }}">Blog</a></li>
