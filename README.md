@@ -1,59 +1,89 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🎓 Website Teknologi Rekayasa Perangkat Lunak (TRPL)
+### Politeknik Meta Industri Cikarang
+
+[![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
+[![Filament](https://img.shields.io/badge/Filament-4.0--beta-FBBF24?style=for-the-badge&logo=filament&logoColor=black)](https://filamentphp.com)
+[![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-4.x-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
+[![PHP](https://img.shields.io/badge/PHP-8.2+-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://php.net)
+
+Website resmi Program Studi **Teknologi Rekayasa Perangkat Lunak (TRPL)** di Politeknik Meta Industri Cikarang. Platform ini dirancang untuk memberikan informasi komprehensif mengenai kurikulum, dosen, prestasi mahasiswa, serta menjadi hub informasi bagi calon mahasiswa and industri partner.
+
+---
+
+## ✨ Fitur Utama
+
+- 🛠️ **Full CMS with Filament**: Panel admin yang powerful untuk mengelola seluruh konten website (Dosen, Blog, Karya Mahasiswa, dll).
+- 📚 **Dynamic Curriculum**: Daftar mata kuliah yang terintegrasi dengan perhitungan SKS otomatis (Teori/Praktek) per semester.
+- 📰 **Dynamic Blog System**: Artikel dengan kategori, tag, and fitur pencarian yang dinamis.
+- 🤝 **Partner & Internship Management**: Pengelolaan data mitra industri and periode magang mahasiswa secara real-time.
+- 📱 **Responsive Design**: Tampilan modern yang dioptimalkan untuk berbagai perangkat (Desktop, Tablet, Mobile).
+- 🚀 **SEO Optimized**: Struktur HTML semantik dengan metadata yang dioptimalkan untuk mesin pencari.
+
+---
+
+## 🚀 Teknologi yang Digunakan
+
+| Komponen | Teknologi |
+| --- | --- |
+| **Framework** | Laravel 12.x |
+| **Admin Panel** | Filament PHP 4.0 (Beta) |
+| **Styling** | Tailwind CSS 4.x & Modern Vanilla CSS |
+| **Asset Manager** | Vite 7.x |
+| **Database** | MySQL / PostgreSQL |
+| **Runtime** | PHP 8.2+ |
+
+---
+
+## 🛠️ Instalasi Lokal
+
+Ikuti langkah-langkah berikut untuk menjalankan project di lingkungan development Anda:
+
+1. **Clone Repository**
+   ```bash
+   git clone https://github.com/username/trpl-web.git
+   cd trpl-web
+   ```
+
+2. **Install Dependensi**
+   ```bash
+   composer install
+   npm install
+   ```
+
+3. **Konfigurasi Environment**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+   *Sesuaikan pengaturan database di file `.env`.*
+
+4. **Migrasi & Seeding**
+   ```bash
+   php artisan migrate --seed
+   ```
+
+5. **Jalankan Aplikasi**
+   ```bash
+   npm run dev
+   ```
+
+---
+
+## 📂 Struktur Folder Penting
+
+- `app/Filament/Resources/`: Konfigurasi resource untuk Dashboard Admin.
+- `app/Models/`: Definisi skema and relasi database.
+- `resources/views/`: File template Blade untuk tampilan frontend.
+- `public/assets/`: File statis seperti gambar, CSS, and JavaScript.
+
+---
+
+## 📄 Lisensi
+
+Project ini dikembangkan untuk keperluan internal **Politeknik Meta Industri Cikarang**. Seluruh hak cipta dilindungi.
+
+---
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  Dibuat dengan ❤️ oleh Tim Pengembang TRPL Politeknik Meta Industri
 </p>
-
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
