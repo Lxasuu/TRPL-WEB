@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             KaryaMahasiswaSeeder::class,
             BeasiswaSeeder::class,
             FaqSeeder::class,
+            BlogPostSeeder::class,
         ]);
     }
 }

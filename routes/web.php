@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\Stat;
 use App\Models\Dosen;
@@ -75,11 +77,29 @@ Route::post('/kontak', function (Illuminate\Http\Request $request) {
     }
 });
 
-Route::get('/blog', function () {
-    $blogPosts = BlogPost::where('status', 'published')
-        ->orderBy('published_at', 'desc')
+Route::get('/blog', function (Request $request) {
+    $query = BlogPost::where('status', 'published');
+
+    if ($request->has('search')) {
+        $search = $request->get('search');
+        $query->where(function($q) use ($search) {
+            $q->where('title', 'like', "%{$search}%")
+              ->orWhere('content', 'like', "%{$search}%");
+        });
+    }
+
+    if ($request->has('category')) {
+        $query->where('category', $request->get('category'));
+    }
+
+    $blogPosts = $query->orderBy('published_at', 'desc')->get();
+    
+    $categories = BlogPost::where('status', 'published')
+        ->select('category', DB::raw('count(*) as count'))
+        ->groupBy('category')
         ->get();
-    return view('blog', compact('blogPosts'));
+
+    return view('blog', compact('blogPosts', 'categories'));
 });
 
 Route::get('/blog/{slug}', function ($slug) {

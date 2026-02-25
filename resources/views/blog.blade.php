@@ -55,6 +55,7 @@
                                             <ul>
                                                 <li class="d-flex align-items-center"><i class="bi bi-person"></i> {{ $post->author->name ?? 'Admin' }}</li>
                                                 <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <time datetime="{{ $post->published_at?->format('Y-m-d') }}">{{ $post->published_at?->format('M d, Y') }}</time></li>
+                                                <li class="d-flex align-items-center"><i class="bi bi-folder"></i> {{ $post->category }}</li>
                                             </ul>
                                         </div>
 
@@ -99,8 +100,8 @@
                     <!-- Search Widget -->
                     <div class="search-widget widget-item">
                         <h3 class="widget-title">Search</h3>
-                        <form action="" class="search-form">
-                            <input type="text" placeholder="Cari artikel...">
+                        <form action="{{ url('/blog') }}" method="get" class="search-form">
+                            <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari artikel...">
                             <button type="submit" title="Search"><i class="bi bi-search"></i></button>
                         </form>
                     </div><!--/Search Widget -->
@@ -109,11 +110,14 @@
                     <div class="categories-widget widget-item">
                         <h3 class="widget-title">Categories</h3>
                         <ul class="mt-3">
-                            <li><a href="#">General <span>(25)</span></a></li>
-                            <li><a href="#">Lifestyle <span>(12)</span></a></li>
-                            <li><a href="#">Travel <span>(5)</span></a></li>
-                            <li><a href="#">Design <span>(22)</span></a></li>
-                            <li><a href="#">Education <span>(14)</span></a></li>
+                            <li><a href="{{ url('/blog') }}" class="{{ !request('category') ? 'active-cat' : '' }}">All <span>({{ \App\Models\BlogPost::where('status', 'published')->count() }})</span></a></li>
+                            @foreach($categories as $cat)
+                            <li>
+                                <a href="{{ url('/blog?category=' . $cat->category) }}" class="{{ request('category') == $cat->category ? 'active-cat' : '' }}">
+                                    {{ $cat->category }} <span>({{ $cat->count }})</span>
+                                </a>
+                            </li>
+                            @endforeach
                         </ul>
                     </div><!--/Categories Widget -->
 
@@ -305,7 +309,7 @@
             color: #475569;
             font-weight: 500;
         }
-        .categories-widget ul li a:hover {
+        .categories-widget ul li a:hover, .categories-widget ul li a.active-cat {
             color: var(--accent-color);
             padding-left: 5px;
         }
