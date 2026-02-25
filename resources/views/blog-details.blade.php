@@ -51,6 +51,7 @@
                                     <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="#">{{ $post->author->name ?? 'Admin' }}</a></li>
                                     <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="#"><time
                                                 datetime="{{ $post->published_at?->format('Y-m-d') }}">{{ $post->published_at?->format('M d, Y') }}</time></a></li>
+                                    <li class="d-flex align-items-center"><i class="bi bi-folder"></i> <a href="{{ url('/blog?category=' . $post->category) }}">{{ $post->category }}</a></li>
                                 </ul>
                             </div><!-- End meta top -->
 
@@ -89,12 +90,14 @@
 
                         <h3 class="widget-title">Categories</h3>
                         <ul class="mt-3">
-                            <li><a href="#">General <span>(25)</span></a></li>
-                            <li><a href="#">Lifestyle <span>(12)</span></a></li>
-                            <li><a href="#">Travel <span>(5)</span></a></li>
-                            <li><a href="#">Design <span>(22)</span></a></li>
-                            <li><a href="#">Creative <span>(8)</span></a></li>
-                            <li><a href="#">Educaion <span>(14)</span></a></li>
+                            <li><a href="{{ url('/blog') }}">All <span>({{ \App\Models\BlogPost::where('status', 'published')->count() }})</span></a></li>
+                            @foreach($categories as $cat)
+                            <li>
+                                <a href="{{ url('/blog?category=' . $cat->category) }}">
+                                    {{ $cat->category }} <span>({{ $cat->count }})</span>
+                                </a>
+                            </li>
+                            @endforeach
                         </ul>
 
                     </div><!--/Categories Widget -->
@@ -122,19 +125,13 @@
                     <div class="tags-widget widget-item">
 
                         <h3 class="widget-title">Tags</h3>
-                        <ul>
-                            <li><a href="#">App</a></li>
-                            <li><a href="#">IT</a></li>
-                            <li><a href="#">Business</a></li>
-                            <li><a href="#">Mac</a></li>
-                            <li><a href="#">Design</a></li>
-                            <li><a href="#">Office</a></li>
-                            <li><a href="#">Creative</a></li>
-                            <li><a href="#">Studio</a></li>
-                            <li><a href="#">Smart</a></li>
-                            <li><a href="#">Tips</a></li>
-                            <li><a href="#">Marketing</a></li>
-                        </ul>
+                        <div class="tags-list mt-3">
+                            @forelse($tags as $tag)
+                                <a href="{{ url('/blog?search=' . $tag) }}">{{ $tag }}</a>
+                            @empty
+                                <p class="text-muted small">Belum ada tag.</p>
+                            @endforelse
+                        </div>
 
                     </div><!--/Tags Widget -->
 
@@ -144,4 +141,74 @@
 
         </div>
     </div>
+
+    <style>
+        .sidebar .widget-item {
+            background: #fff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .sidebar .widget-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f1f5f9;
+            position: relative;
+        }
+        .sidebar .widget-title::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 50px;
+            height: 2px;
+            background: var(--accent-color);
+        }
+        .categories-widget ul li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #e2e8f0;
+            list-style: none;
+        }
+        .categories-widget ul li:last-child {
+            border-bottom: none;
+        }
+        .categories-widget ul li a {
+            display: flex;
+            justify-content: space-between;
+            color: #475569;
+            font-weight: 500;
+        }
+        .categories-widget ul li a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+        .categories-widget ul li span {
+            color: #94a3b8;
+            font-size: 13px;
+        }
+        .tags-widget .tags-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .tags-widget .tags-list a {
+            padding: 5px 15px;
+            background: #f1f5f9;
+            color: #475569;
+            border-radius: 50px;
+            font-size: 13px;
+            transition: all 0.3s ease;
+        }
+        .tags-widget .tags-list a:hover {
+            background: var(--accent-color);
+            color: #fff;
+        }
+        .meta-top ul li a:hover {
+            color: var(--accent-color);
+        }
+    </style>
 @endsection

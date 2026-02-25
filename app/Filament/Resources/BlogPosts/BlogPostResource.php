@@ -14,6 +14,7 @@ use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Components\Utilities\Set;
@@ -57,6 +58,8 @@ class BlogPostResource extends Resource
                     ->image()
                     ->disk('public')
                     ->directory('blog'),
+                TextInput::make('category'),
+                TagsInput::make('tags'),
                 Select::make('status')
                     ->options([
                         'draft' => 'Draft',
@@ -100,6 +103,8 @@ class BlogPostResource extends Resource
                     ->numeric()
                     ->sortable(),
                 ImageColumn::make('image_path'),
+                TextColumn::make('category')
+                    ->searchable(),
                 TextColumn::make('status'),
                 TextColumn::make('published_at')
                     ->dateTime()

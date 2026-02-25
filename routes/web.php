@@ -99,7 +99,14 @@ Route::get('/blog', function (Request $request) {
         ->groupBy('category')
         ->get();
 
-    return view('blog', compact('blogPosts', 'categories'));
+    $tags = BlogPost::where('status', 'published')
+        ->whereNotNull('tags')
+        ->pluck('tags')
+        ->flatten()
+        ->unique()
+        ->filter();
+
+    return view('blog', compact('blogPosts', 'categories', 'tags'));
 });
 
 Route::get('/blog/{slug}', function ($slug) {
@@ -109,7 +116,20 @@ Route::get('/blog/{slug}', function ($slug) {
         ->latest('published_at')
         ->take(5)
         ->get();
-    return view('blog-details', compact('post', 'recentPosts'));
+
+    $categories = BlogPost::where('status', 'published')
+        ->select('category', DB::raw('count(*) as count'))
+        ->groupBy('category')
+        ->get();
+
+    $tags = BlogPost::where('status', 'published')
+        ->whereNotNull('tags')
+        ->pluck('tags')
+        ->flatten()
+        ->unique()
+        ->filter();
+
+    return view('blog-details', compact('post', 'recentPosts', 'categories', 'tags'));
 })->name('blog.show');
 
 Route::get('/blog-details', function () {

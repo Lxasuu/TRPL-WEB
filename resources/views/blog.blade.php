@@ -139,6 +139,18 @@
                         </div>
                     </div><!--/Recent Posts Widget -->
 
+                    <!-- Tags Widget -->
+                    <div class="tags-widget widget-item">
+                        <h3 class="widget-title">Tags</h3>
+                        <div class="tags-list mt-3">
+                            @forelse($tags as $tag)
+                                <a href="{{ url('/blog?search=' . $tag) }}">{{ $tag }}</a>
+                            @empty
+                                <p class="text-muted small">Belum ada tag.</p>
+                            @endforelse
+                        </div>
+                    </div><!--/Tags Widget -->
+
                 </div>
 
             </div>
@@ -316,6 +328,23 @@
         .categories-widget ul li span {
             color: #94a3b8;
             font-size: 13px;
+        }
+        .tags-widget .tags-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .tags-widget .tags-list a {
+            padding: 5px 15px;
+            background: #f1f5f9;
+            color: #475569;
+            border-radius: 50px;
+            font-size: 13px;
+            transition: all 0.3s ease;
+        }
+        .tags-widget .tags-list a:hover {
+            background: var(--accent-color);
+            color: #fff;
         }
     </style>
 @endsection
