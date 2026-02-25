@@ -23,7 +23,7 @@ class PeriodeMagangResource extends Resource
 {
     protected static ?string $model = PeriodeMagang::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedCalendarDays;
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-briefcase';
 
     protected static ?string $navigationLabel = 'Periode Magang';
 

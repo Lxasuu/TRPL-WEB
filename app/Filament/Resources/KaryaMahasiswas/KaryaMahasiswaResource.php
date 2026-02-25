@@ -30,7 +30,7 @@ class KaryaMahasiswaResource extends Resource
 {
     protected static ?string $model = KaryaMahasiswa::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-light-bulb';
 
     protected static ?string $recordTitleAttribute = 'title';
 

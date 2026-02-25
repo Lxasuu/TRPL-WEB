@@ -23,7 +23,7 @@ class MataKuliahResource extends Resource
 {
     protected static ?string $model = MataKuliah::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-book-open';
 
     protected static ?string $recordTitleAttribute = 'nama';
 
