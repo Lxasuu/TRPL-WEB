@@ -38,6 +38,14 @@ class MataKuliahResource extends Resource
                 TextInput::make('sks')
                     ->required()
                     ->numeric(),
+                TextInput::make('sks_teori')
+                    ->required()
+                    ->numeric()
+                    ->default(0),
+                TextInput::make('sks_praktek')
+                    ->required()
+                    ->numeric()
+                    ->default(0),
                 TextInput::make('semester')
                     ->required()
                     ->numeric(),
@@ -77,6 +85,12 @@ class MataKuliahResource extends Resource
                 TextColumn::make('nama')
                     ->searchable(),
                 TextColumn::make('sks')
+                    ->numeric()
+                    ->sortable(),
+                TextColumn::make('sks_teori')
+                    ->numeric()
+                    ->sortable(),
+                TextColumn::make('sks_praktek')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('semester')

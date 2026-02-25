@@ -150,12 +150,20 @@
                 <p>Daftar Mata Kuliah per Semester</p>
             </div>
 
+            @php
+                $allCourses = $mataKuliahs->flatten();
+                $totalMK = $allCourses->count();
+                $totalSksTeori = $allCourses->sum('sks_teori');
+                $totalSksPraktek = $allCourses->sum('sks_praktek');
+                $totalSks = $allCourses->sum('sks');
+            @endphp
+
             <div class="kurikulum-summary">
                 <strong>Teknologi Rekayasa Perangkat Lunak</strong><br>
-                Total mata kuliah: <strong>58</strong> |
-                Total SKS Teori: <strong>77</strong> |
-                Total SKS Praktek: <strong>75</strong> |
-                Total SKS: <strong>152</strong>
+                Total mata kuliah: <strong>{{ $totalMK }}</strong> |
+                Total SKS Teori: <strong>{{ $totalSksTeori }}</strong> |
+                Total SKS Praktek: <strong>{{ $totalSksPraktek }}</strong> |
+                Total SKS: <strong>{{ $totalSks }}</strong>
             </div>
 
             <div class="kurikulum-container">
