@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
-                    <img src="assets/img/about.jpg" class="img-fluid" alt="">
+                    <img src="/assets/img/about.jpg" class="img-fluid" alt="">
                 </div>
             </div>
         </div>
@@ -64,7 +64,7 @@
             <div class="row gy-4">
                 <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="card">
-                        <img src="assets/img/values-1.png" class="img-fluid" alt="">
+                        <img src="/assets/img/values-1.png" class="img-fluid" alt="">
                         <h3>Visi</h3>
                         <p style="text-align: justify;">Menjadi Program Studi Sarjaan Terapan Teknologi Rekayasa
                             Perangkat Lunak yang unggul dan inovatif dalam bidang industri manufaktur di Jawa Barat
@@ -74,7 +74,7 @@
 
                 <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="card">
-                        <img src="assets/img/values-2.png" class="img-fluid" alt="">
+                        <img src="/assets/img/values-2.png" class="img-fluid" alt="">
                         <h3>Misi</h3>
                         <p style="text-align: justify;">Menyelenggarakan pendidikan vokasi yang berkualitas dalam
                             bidang rekayasa perangkat lunak dengan fokus pada kebutuhan industri manufaktur.</p>
@@ -91,7 +91,7 @@
 
                 <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="card">
-                        <img src="assets/img/values-3.png" class="img-fluid" alt="">
+                        <img src="/assets/img/values-3.png" class="img-fluid" alt="">
                         <h3>Tujuan</h3>
                         <p style="text-align: justify;">Menghasilkan lulusan yang memiliki kompetensi dibidang
                             teknologi rekayasa perangkat lunak yang memiliki daya saing, kemandirian, berakhlak
@@ -124,7 +124,7 @@
 
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
-                    <img src="assets/img/sertifikat-ban-pt.jpg"
+                    <img src="/assets/img/sertifikat-ban-pt.jpg"
                         alt="Sertifikat Akreditasi BAN-PT Prodi Teknologi Rekayasa Perangkat Lunak"
                         class="img-fluid akreditasi-img">
 

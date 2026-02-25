@@ -21,7 +21,7 @@
             </div>
           </div>
           <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out">
-            <img src="assets/img/hero-img.png" class="img-fluid animated" alt="">
+            <img src="/assets/img/hero-img.png" class="img-fluid animated" alt="">
           </div>
         </div>
       </div>
@@ -55,7 +55,7 @@
           </div>
 
           <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
-            <img src="assets/img/about.jpg" class="img-fluid" alt="">
+            <img src="/assets/img/about.jpg" class="img-fluid" alt="">
           </div>
 
         </div>
@@ -714,7 +714,7 @@
             @foreach($karyas as $karya)
             @php
                 $imageUrl = str_starts_with($karya->image_path, 'assets/') 
-                    ? asset($karya->image_path) 
+                    ? '/' . $karya->image_path 
                     : Storage::url($karya->image_path);
             @endphp
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-{{ strtolower(explode(' ', $karya->category)[0] ?? 'web') }}">
@@ -1135,11 +1135,12 @@
             <div class="swiper-slide h-auto">
               <div class="team-member">
                 <div class="member-img">
-                  @if($dosen->image_path)
-                    <img src="{{ asset('storage/' . $dosen->image_path) }}" class="img-fluid" alt="{{ $dosen->name }}">
-                  @else
-                    <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="{{ $dosen->name }}">
-                  @endif
+                @php
+                  $dosenImageUrl = $dosen->image_path 
+                      ? (str_starts_with($dosen->image_path, 'assets/') ? '/' . $dosen->image_path : Storage::url($dosen->image_path))
+                      : '/assets/img/team/team-1.jpg';
+                @endphp
+                <img src="{{ $dosenImageUrl }}" class="img-fluid" alt="{{ $dosen->name }}">
                   <div class="social">
                     @if($dosen->twitter) <a href="{{ $dosen->twitter }}"><i class="bi bi-twitter-x"></i></a> @endif
                     @if($dosen->facebook) <a href="{{ $dosen->facebook }}"><i class="bi bi-facebook"></i></a> @endif
@@ -1186,11 +1187,12 @@
             <div class="post-item position-relative h-100">
 
               <div class="post-img position-relative overflow-hidden">
-                @if($post->image_path)
-                  <img src="{{ asset('storage/' . $post->image_path) }}" class="img-fluid" alt="{{ $post->title }}">
-                @else
-                  <img src="assets/img/blog/blog-1.jpg" class="img-fluid" alt="{{ $post->title }}">
-                @endif
+                @php
+                  $postImageUrl = $post->image_path 
+                      ? (str_starts_with($post->image_path, 'assets/') ? '/' . $post->image_path : Storage::url($post->image_path))
+                      : '/assets/img/blog/blog-1.jpg';
+                @endphp
+                <img src="{{ $postImageUrl }}" class="img-fluid" alt="{{ $post->title }}">
                 <span class="post-date">{{ $post->published_at?->format('M d') }}</span>
               </div>
 

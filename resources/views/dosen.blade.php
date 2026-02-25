@@ -34,7 +34,7 @@
                 @foreach($dosens as $dosen)
                 @php
                     $imageUrl = str_starts_with($dosen->image_path, 'assets/') 
-                        ? asset($dosen->image_path) 
+                        ? '/' . $dosen->image_path 
                         : Storage::url($dosen->image_path);
                 @endphp
                 <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="{{ $loop->iteration * 100 }}">

@@ -97,7 +97,7 @@
         <div class="container">
             <div class="row gy-5">
                 <div class="col-xl-6" data-aos="zoom-out" data-aos-delay="100">
-                    <img src="assets/img/features.png" class="img-fluid" alt="">
+                    <img src="/assets/img/features.png" class="img-fluid" alt="">
                 </div>
                 <div class="col-xl-6 d-flex">
                     <div class="row align-self-center gy-4">
