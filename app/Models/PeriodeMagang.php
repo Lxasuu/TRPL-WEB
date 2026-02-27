@@ -7,13 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 class PeriodeMagang extends Model
 {
     protected $fillable = [
-        'student_name', 'nim', 'internship_place', 'location', 'start_date', 'end_date'
+        'student_name', 'nim', 'internship_place', 'location', 'start_date', 'end_date', 'dosen_id'
     ];
 
     protected $casts = [
         'start_date' => 'date',
         'end_date' => 'date',
     ];
+
+    public function dosen()
+    {
+        return $this->belongsTo(Dosen::class, 'dosen_id');
+    }
 
     public function getFormattedPeriodAttribute()
     {

@@ -64,15 +64,17 @@
                                             <th>Nama Mahasiswa</th>
                                             <th>NIM</th>
                                             <th>Tempat Magang</th>
+                                            <th>Dosen Pembimbing</th>
                                             <th>Lokasi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach($students as $student)
-                                            <tr class="magang-row" data-search="{{ strtolower($student->student_name . ' ' . $student->nim . ' ' . $student->internship_place . ' ' . $student->location) }}">
+                                            <tr class="magang-row" data-search="{{ strtolower($student->student_name . ' ' . $student->nim . ' ' . $student->internship_place . ' ' . ($student->dosen?->name ?? '') . ' ' . $student->location) }}">
                                                 <td data-label="Nama">{{ $student->student_name }}</td>
                                                 <td data-label="NIM">{{ $student->nim }}</td>
                                                 <td data-label="Tempat Magang">{{ $student->internship_place }}</td>
+                                                <td data-label="Pembimbing">{{ $student->dosen?->name ?? '-' }}</td>
                                                 <td data-label="Lokasi">{{ $student->location ?? '-' }}</td>
                                             </tr>
                                         @endforeach

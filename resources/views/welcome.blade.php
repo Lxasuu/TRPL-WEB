@@ -1322,7 +1322,7 @@
 
         </div>
 
-      </div>
+      </div>  
 
     </section><!-- /Contact Section -->
 @endsection

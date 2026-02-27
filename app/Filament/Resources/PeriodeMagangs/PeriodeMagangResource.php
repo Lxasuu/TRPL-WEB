@@ -6,6 +6,7 @@ use App\Filament\Resources\PeriodeMagangs\Pages\ManagePeriodeMagangs;
 use App\Models\PeriodeMagang;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Select;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
@@ -50,6 +51,11 @@ class PeriodeMagangResource extends Resource
                 DatePicker::make('end_date')
                     ->label('Tanggal Selesai')
                     ->required(),
+                Select::make('dosen_id')
+                    ->label('Dosen Pembimbing')
+                    ->relationship('dosen', 'name')
+                    ->searchable()
+                    ->preload(),
             ]);
     }
 
@@ -69,6 +75,9 @@ class PeriodeMagangResource extends Resource
                 TextColumn::make('formatted_period')
                     ->label('Periode')
                     ->sortable(),
+                TextColumn::make('dosen.name')
+                    ->label('Dosen Pembimbing')
+                    ->searchable(),
             ])
             ->filters([
                 //
