@@ -41,7 +41,10 @@ class TestimonialResource extends Resource
                     ->required()
                     ->columnSpanFull(),
                 FileUpload::make('image_path')
-                    ->image(),
+                    ->image()
+                    ->disk('uploads')
+                    ->visibility('public')
+                    ->directory('testimonials'),
             ]);
     }
 

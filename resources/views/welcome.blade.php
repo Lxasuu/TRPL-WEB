@@ -431,6 +431,138 @@
 
     </section><!-- /Pricing Section -->
 
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Testimonial</h2>
+        <p>Apa Kata Mereka Tentang TRPL</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="swiper testimonials-swiper init-swiper">
+          <script type="application/json" class="swiper-config">
+            {
+              "loop": true,
+              "speed": 600,
+              "autoplay": {
+                "delay": 5000
+              },
+              "slidesPerView": "auto",
+              "pagination": {
+                "el": ".swiper-pagination",
+                "type": "bullets",
+                "clickable": true
+              },
+              "breakpoints": {
+                "320": {
+                  "slidesPerView": 1,
+                  "spaceBetween": 40
+                },
+                "1200": {
+                  "slidesPerView": 3,
+                  "spaceBetween": 20
+                }
+              }
+            }
+          </script>
+          <div class="swiper-wrapper">
+
+            @foreach($testimoni as $t)
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <div class="stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <p>
+                  "{{ $t->comment }}"
+                </p>
+                <div class="profile mt-auto text-center">
+                  @php
+                    $testimoniImageUrl = $t->image_path 
+                        ? (str_starts_with($t->image_path, 'assets/') ? '/' . $t->image_path : asset('uploads/' . $t->image_path))
+                        : '/assets/img/team/team-1.jpg';
+                  @endphp
+                  <img src="{{ $testimoniImageUrl }}" class="testimonial-img" alt="{{ $t->name }}">
+                  <h3>{{ $t->name }}</h3>
+                  <h4>Batch {{ $t->batch }}</h4>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+            @endforeach
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+
+      <style>
+        .testimonials {
+            padding: 80px 0;
+            background-color: #f8fbfe;
+        }
+        .testimonials .testimonial-item {
+          box-sizing: content-box;
+          padding: 30px;
+          margin: 30px 15px;
+          min-height: 200px;
+          box-shadow: 0px 0 20px rgba(1, 41, 112, 0.1);
+          background: #fff;
+          border-radius: 15px;
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+        }
+        .testimonials .testimonial-item .stars {
+          margin-bottom: 15px;
+        }
+        .testimonials .testimonial-item .stars i {
+          color: #ffc107;
+          margin: 0 1px;
+        }
+        .testimonials .testimonial-item .testimonial-img {
+          width: 90px;
+          border-radius: 50%;
+          border: 4px solid #fff;
+          margin: 0 auto;
+        }
+        .testimonials .testimonial-item h3 {
+          font-size: 18px;
+          font-weight: bold;
+          margin: 10px 0 5px 0;
+          color: #111;
+        }
+        .testimonials .testimonial-item h4 {
+          font-size: 14px;
+          color: #999;
+          margin: 0;
+        }
+        .testimonials .testimonial-item p {
+          font-style: italic;
+          margin: 0 auto 15px auto;
+        }
+        .testimonials .swiper-pagination {
+          margin-top: 20px;
+          position: relative;
+        }
+        .testimonials .swiper-pagination .swiper-pagination-bullet {
+          width: 12px;
+          height: 12px;
+          background-color: #fff;
+          opacity: 1;
+          border: 1px solid #4154f1;
+        }
+        .testimonials .swiper-pagination .swiper-pagination-bullet-active {
+          background-color: #4154f1;
+        }
+      </style>
+
+    </section><!-- /Testimonials Section -->
+
     <!-- Faq Section -->
     <section id="faq" class="faq section">
 

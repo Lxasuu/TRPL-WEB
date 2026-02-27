@@ -12,6 +12,8 @@ use App\Models\PeriodeMagang;
 use App\Models\Beasiswa;
 use App\Models\Faq;
 use App\Models\BlogPost;
+use App\Models\Testimonial;
+
 
 Route::get('/', function () {
     $stats = Stat::all();
@@ -22,7 +24,9 @@ Route::get('/', function () {
         ->get();
     $karyas = KaryaMahasiswa::latest()->take(6)->get();
     $dosens = Dosen::where('is_active', true)->get();
-    return view('welcome', compact('stats', 'faqs', 'blogPosts', 'karyas', 'dosens'));
+    $testimoni = Testimonial::all();
+    return view('welcome', compact('stats', 'faqs', 'blogPosts', 'karyas', 'dosens', 'testimoni'));
+
 });
 
 Route::get('/about', function () {
