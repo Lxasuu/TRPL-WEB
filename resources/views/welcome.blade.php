@@ -435,24 +435,35 @@
     <section id="testimonials" class="testimonials section">
 
       <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Testimonial</h2>
-        <p>Apa Kata Mereka Tentang TRPL</p>
+      <div class="container section-title" data-aos="fade-up" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+        <span class="testimonial-badge">TESTIMONIALS</span>
+        <h2 style="margin-top: 0;">Apa Kata Mereka Tentang TRPL</h2>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        @php
+            // Gabungkan testimonial dengan dirinya sendiri jika jumlahnya sedikit agar slider bisa terus bergerak
+            $displayTestimonials = $testimoni;
+            if ($testimoni->count() > 0 && $testimoni->count() <= 3) {
+                $displayTestimonials = $testimoni->concat($testimoni)->concat($testimoni);
+            }
+        @endphp
 
         <div class="swiper testimonials-swiper init-swiper">
           <script type="application/json" class="swiper-config">
             {
               "loop": true,
-              "speed": 600,
+              "speed": 1000,
               "autoplay": {
-                "delay": 5000
+                "delay": 2500,
+                "disableOnInteraction": false,
+                "pauseOnMouseEnter": true
               },
               "slidesPerView": "auto",
+              "centeredSlides": true,
               "pagination": {
-                "el": ".swiper-pagination",
+                "el": ".testimonials-swiper .swiper-pagination",
                 "type": "bullets",
                 "clickable": true
               },
@@ -461,34 +472,45 @@
                   "slidesPerView": 1,
                   "spaceBetween": 40
                 },
+                "768": {
+                  "slidesPerView": 2,
+                  "spaceBetween": 40
+                },
                 "1200": {
                   "slidesPerView": 3,
-                  "spaceBetween": 20
+                  "spaceBetween": 30
                 }
               }
             }
           </script>
           <div class="swiper-wrapper">
 
-            @foreach($testimoni as $t)
+            @foreach($displayTestimonials as $t)
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <div class="stars">
+                <div class="quote-icon">
+                  <i class="bi bi-quote"></i>
+                </div>
+                <div class="stars text-center">
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
                     class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                 </div>
-                <p>
+                <p class="text-center">
                   "{{ $t->comment }}"
                 </p>
-                <div class="profile mt-auto text-center">
+                <div class="profile mt-auto">
                   @php
                     $testimoniImageUrl = $t->image_path 
                         ? (str_starts_with($t->image_path, 'assets/') ? '/' . $t->image_path : asset('uploads/' . $t->image_path))
                         : '/assets/img/team/team-1.jpg';
                   @endphp
-                  <img src="{{ $testimoniImageUrl }}" class="testimonial-img" alt="{{ $t->name }}">
-                  <h3>{{ $t->name }}</h3>
-                  <h4>Batch {{ $t->batch }}</h4>
+                  <div class="profile-img-wrap mx-auto">
+                    <img src="{{ $testimoniImageUrl }}" class="testimonial-img" alt="{{ $t->name }}">
+                  </div>
+                  <div class="profile-info text-center">
+                    <h3>{{ $t->name }}</h3>
+                    <h4>Batch {{ $t->batch }}</h4>
+                  </div>
                 </div>
               </div>
             </div><!-- End testimonial item -->
@@ -502,62 +524,192 @@
 
       <style>
         .testimonials {
-            padding: 80px 0;
-            background-color: #f8fbfe;
+            padding: 100px 0;
+            background: linear-gradient(180deg, #f8fbfe 0%, #ffffff 100%);
+            position: relative;
+            overflow: hidden;
         }
+        
+        .testimonial-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 999px;
+            background: rgba(65, 84, 241, 0.08);
+            color: #4154f1;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            width: fit-content;
+        }
+
+        .testimonials .swiper {
+          padding: 40px 0 100px 0;
+        }
+
+        .testimonials .swiper-slide {
+          transition: all 0.5s ease;
+          opacity: 0.4;
+          transform: scale(0.85);
+          filter: blur(1px);
+        }
+
+        .testimonials .swiper-slide-active {
+          opacity: 1;
+          transform: scale(1.05);
+          z-index: 10;
+          filter: blur(0);
+        }
+
         .testimonials .testimonial-item {
-          box-sizing: content-box;
-          padding: 30px;
-          margin: 30px 15px;
-          min-height: 200px;
-          box-shadow: 0px 0 20px rgba(1, 41, 112, 0.1);
+          box-sizing: border-box;
+          padding: 60px 45px 45px 45px;
           background: #fff;
-          border-radius: 15px;
+          border-radius: 35px;
           display: flex;
           flex-direction: column;
           height: 100%;
-        }
-        .testimonials .testimonial-item .stars {
-          margin-bottom: 15px;
-        }
-        .testimonials .testimonial-item .stars i {
-          color: #ffc107;
-          margin: 0 1px;
-        }
-        .testimonials .testimonial-item .testimonial-img {
-          width: 90px;
-          border-radius: 50%;
-          border: 4px solid #fff;
-          margin: 0 auto;
-        }
-        .testimonials .testimonial-item h3 {
-          font-size: 18px;
-          font-weight: bold;
-          margin: 10px 0 5px 0;
-          color: #111;
-        }
-        .testimonials .testimonial-item h4 {
-          font-size: 14px;
-          color: #999;
-          margin: 0;
-        }
-        .testimonials .testimonial-item p {
-          font-style: italic;
-          margin: 0 auto 15px auto;
-        }
-        .testimonials .swiper-pagination {
-          margin-top: 20px;
           position: relative;
+          transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+          border: 1px solid rgba(0, 0, 0, 0.02);
+          box-shadow: 0 10px 40px rgba(1, 41, 112, 0.03);
         }
+
+        .swiper-slide-active .testimonial-item {
+          box-shadow: 0 25px 80px rgba(65, 84, 241, 0.12);
+          border-color: rgba(65, 84, 241, 0.1);
+        }
+
+        .quote-icon {
+          position: absolute;
+          top: 35px;
+          left: 50%;
+          transform: translateX(-50%);
+          font-size: 45px;
+          color: rgba(65, 84, 241, 0.08);
+          line-height: 1;
+          transition: all 0.5s ease;
+        }
+
+        .swiper-slide-active .quote-icon {
+          color: rgba(65, 84, 241, 0.15);
+          transform: translateX(-50%) scale(1.1);
+        }
+
+        .testimonials .testimonial-item .stars {
+          margin-bottom: 25px;
+        }
+
+        .testimonials .testimonial-item .stars i {
+          color: #ffb800;
+          margin: 0 2px;
+          font-size: 16px;
+        }
+
+        .testimonials .testimonial-item p {
+          font-family: 'Inter', sans-serif;
+          font-style: italic;
+          font-size: 18px;
+          line-height: 1.9;
+          color: #475569;
+          margin-bottom: 40px;
+          flex-grow: 1;
+          font-weight: 400;
+        }
+
+        .testimonials .testimonial-item .profile {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 15px;
+          border-top: 1px solid rgba(0, 0, 0, 0.05);
+          padding-top: 35px;
+          margin-top: auto;
+        }
+
+        .profile-img-wrap {
+          width: 85px;
+          height: 85px;
+          border-radius: 50%;
+          overflow: hidden;
+          border: 5px solid #fff;
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+          flex-shrink: 0;
+          margin-bottom: 8px;
+          transition: all 0.5s ease;
+        }
+
+        .swiper-slide-active .profile-img-wrap {
+          transform: scale(1.1);
+          box-shadow: 0 15px 35px rgba(65, 84, 241, 0.2);
+        }
+
+        .testimonials .testimonial-item .testimonial-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .profile-info h3 {
+          font-size: 20px;
+          font-weight: 800;
+          margin: 0 0 6px 0;
+          color: #012970;
+          font-family: 'Outfit', sans-serif;
+        }
+
+        .profile-info h4 {
+          font-size: 14px;
+          color: #64748b;
+          font-weight: 700;
+          margin: 0;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+
+        .testimonials .swiper-pagination {
+          bottom: 40px !important;
+        }
+
         .testimonials .swiper-pagination .swiper-pagination-bullet {
           width: 12px;
           height: 12px;
-          background-color: #fff;
-          opacity: 1;
-          border: 1px solid #4154f1;
+          background-color: #cbd5e1;
+          opacity: 0.5;
+          transition: all 0.4s ease;
+          margin: 0 6px !important;
         }
+
         .testimonials .swiper-pagination .swiper-pagination-bullet-active {
           background-color: #4154f1;
+          width: 35px;
+          border-radius: 8px;
+          opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+          .testimonials .swiper-slide {
+            transform: scale(0.9);
+            opacity: 0.6;
+          }
+          .testimonials .swiper-slide-active {
+            transform: scale(1);
+          }
+          .testimonials .testimonial-item {
+            padding: 50px 30px 40px 30px;
+          }
+          .testimonials {
+            padding: 80px 0;
+          }
+          .quote-icon {
+            font-size: 35px;
+            top: 25px;
+          }
+          .profile-img-wrap {
+            width: 70px;
+            height: 70px;
+          }
         }
       </style>
 
@@ -1214,6 +1366,8 @@
         992: { spaceBetween: 20 }
       }
     });
+
+    // Testimonials Swiper - Handled via .init-swiper class and JSON config
 
     new Swiper(".dosen-swiper", {
       speed: 600,

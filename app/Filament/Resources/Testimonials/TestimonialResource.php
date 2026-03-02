@@ -42,6 +42,10 @@ class TestimonialResource extends Resource
                     ->columnSpanFull(),
                 FileUpload::make('image_path')
                     ->image()
+                    ->avatar()
+                    ->imageCropAspectRatio('1:1')
+                    ->imageResizeTargetWidth('300')
+                    ->imageResizeTargetHeight('300')
                     ->disk('uploads')
                     ->visibility('public')
                     ->directory('testimonials'),
